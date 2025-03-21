@@ -6,12 +6,14 @@
 
 // Composables
 import { createRouter, createWebHistory } from 'vue-router/auto'
-import MatchingPostCard from '../components/matching/MatchingPostCard.vue';
 
-// 동적 임포트를 사용하여 컴포넌트 로드
+import MatchingPostCard from '../components/matching/MatchingPostCard.vue';
+import MatchingCommentCard from '../components/matching/MatchingCommentCard.vue'
+
 const routes = [
-  { path: '/', component: MatchingPostCard }
-];
+  { path: '/', component: MatchingPostCard },
+  { path: '/', component: MatchingCommentCard }
+]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

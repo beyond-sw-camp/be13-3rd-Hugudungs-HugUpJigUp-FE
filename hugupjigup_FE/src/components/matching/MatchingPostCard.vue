@@ -9,7 +9,7 @@
             sm="6"
             md="4"
           >
-            <v-card class="custom-card">
+            <v-card class="custom-card cardStyle">
               <div class="image-container">
                 <v-img
                   :src="card.image"
@@ -18,22 +18,21 @@
                   class="rounded-circle image-center"
                 ></v-img>
               </div>
-              <v-card-title class="text-center font-weight-bold">
+              <v-card-title class="text-center font-weight-bold card-title-text title-style">
                 {{ card.title }}
               </v-card-title>
-              <v-card-subtitle class="text-center">{{
-                card.subtitle
-              }}</v-card-subtitle>
-              <v-card-text class="card-description">
+              <v-card-subtitle class="text-center card-subtitle-text subtitle-style">
+                {{ card.subtitle }}
+              </v-card-subtitle>
+              <v-card-text class="card-description card-text">
                 <div>• 경력</div>
                 <div class="tab-space">{{ card.career }}</div>
-                <div class="space-between-sections"></div>
                 <div class="space-between-sections"></div>
                 <div>• 자기소개</div>
                 <div class="tab-space">{{ card.introduction }}</div>
               </v-card-text>
               <v-card-actions class="justify-center">
-                <v-btn color="primary" text @click="viewDetails(card)">
+                <v-btn class="details-button" @click="viewDetails(card)">
                   자세히 보기
                 </v-btn>
               </v-card-actions>
@@ -85,10 +84,16 @@
       const viewDetails = (card: Card) => {
         alert(`상세 정보: ${card.title}`);
       };
+
+      const cardStyle = ref({
+      'box-shadow': '0px 4px 4px rgba(0, 0, 0, 0.05)',
+      'border': '1px solid #ddd',
+    });
   
       return {
         cardData,
         viewDetails,
+        cardStyle
       };
     },
   });
@@ -104,6 +109,7 @@
     flex-direction: column;
     justify-content: space-between;
     margin: 0 auto;
+    background-color: white;
   }
   
   .image-container {
@@ -123,6 +129,22 @@
     display: block;
   }
   
+  .card-title-text,
+  .card-subtitle-text,
+  .card-text {
+    color: #666666;
+  }
+  
+  .title-style {
+    font-size: 2em;
+  }
+  
+  .subtitle-style {
+    font-size: 1.5em;
+    font-weight: 800; /* 더 진하게 */
+    color: #333333;   /* 거의 검은색 */
+  }
+  
   .card-description {
     font-size: 0.9em;
     margin-bottom: 10px;
@@ -138,6 +160,11 @@
   
   .space-between-sections {
     margin-top: 10px;
+  }
+  
+  .details-button {
+    background-color: black;
+    color: white;
   }
   </style>
   
