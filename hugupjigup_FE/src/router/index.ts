@@ -6,7 +6,11 @@
 
 // Composables
 import { createRouter, createWebHistory } from 'vue-router/auto'
-import { routes } from 'vue-router/auto-routes'
+import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
+
+const routes = [
+  { path: '/', component: MatchingCommentCard }
+];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
