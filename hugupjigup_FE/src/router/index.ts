@@ -7,10 +7,11 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router/auto'
 // import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
-import LogoTap from '@/components/common/LogoTap.vue';
+// import LogoTap from '@/components/common/LogoTap.vue';
+import PageTop from '@/components/common/PageTop.vue';
 
 const routes = [
-  { path: '/', component: LogoTap }
+  { path: '/', component: PageTop }
 ];
 
 const router = createRouter({
