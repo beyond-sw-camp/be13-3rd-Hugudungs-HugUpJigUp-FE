@@ -10,11 +10,13 @@ import { createRouter, createWebHistory } from 'vue-router/auto'
 import MatchingPostCard from '../components/matching/MatchingPostCard.vue';
 import MatchingCommentCard from '../components/matching/MatchingCommentCard.vue'
 import CreateMatchingForm from '../components/matching/CreateMatchingForm.vue';
+import UpdateMentorMenteeForm from '../components/profile/UpdateMentorMenteeForm.vue';
 
 const routes = [
   { path: '/', component: MatchingPostCard },
   { path: '/', component: MatchingCommentCard },
-  { path: '/', component: CreateMatchingForm }
+  { path: '/', component: CreateMatchingForm },
+  { path: '/', component: UpdateMentorMenteeForm }
 
 ]
 
