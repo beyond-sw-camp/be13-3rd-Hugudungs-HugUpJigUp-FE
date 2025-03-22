@@ -15,7 +15,6 @@ declare module 'vue' {
     CreatePostForm: typeof import('./src/components/board/CreatePostForm.vue')['default']
     Footer: typeof import('./src/components/layout/Footer.vue')['default']
     Header: typeof import('./src/components/layout/Header.vue')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     InsertTextForm: typeof import('./src/components/sign/InsertTextForm.vue')['default']
     LogoTap: typeof import('./src/components/common/LogoTap.vue')['default']
     MatchingCommentCard: typeof import('./src/components/matching/MatchingCommentCard.vue')['default']

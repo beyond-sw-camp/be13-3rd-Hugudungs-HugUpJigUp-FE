@@ -7,9 +7,13 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
+import MatchingPopup from '@/components/matching/MatchingPopup.vue'
+import CreateMatchingCommentForm from '@/components/matching/CreateMatchingCommentForm.vue'
 
 const routes = [
-  { path: '/', component: MatchingCommentCard }
+  { path: '/', component: MatchingCommentCard },
+  { path: '/test-popup', component: MatchingPopup },
+  { path: '/test-comment', component: CreateMatchingCommentForm },
 ];
 
 const router = createRouter({
