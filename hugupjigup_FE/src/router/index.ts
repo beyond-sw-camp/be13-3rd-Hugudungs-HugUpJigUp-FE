@@ -8,10 +8,11 @@
 import { createRouter, createWebHistory } from 'vue-router/auto'
 // import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
 // import LogoTap from '@/components/common/LogoTap.vue';
-import PageTop from '@/components/common/PageTop.vue';
+// import PageTop from '@/components/common/PageTop.vue';
+import Pagination from '@/components/common/Pagination.vue';
 
 const routes = [
-  { path: '/', component: PageTop }
+  { path: '/', component: Pagination }
 ];
 
 const router = createRouter({
