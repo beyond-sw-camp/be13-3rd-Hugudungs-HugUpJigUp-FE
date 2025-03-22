@@ -10,13 +10,15 @@
                 </v-breadcrumbs>
             </v-col>
 
-            <!-- Select Dropdown and Search Field -->
+            <!-- Select Dropdown, Search Field, and Button -->
             <v-col cols="6" class="d-flex align-center" width="100px">
                 <v-select v-model="selectedLocation" :items="locations" density="compact" class="me-2 select-field"
                     hide-details @change="handleSelectChange"></v-select>
                 <v-text-field :loading="loading" append-inner-icon="mdi-magnify" density="compact"
                     label="검색할 내용을 입력하세요." variant="outlined" hide-details class="search-field"
                     @click:append-inner="onClick" @keyup.enter="onClick"></v-text-field>
+                <!-- New Button -->
+                <v-btn variant="outlined" class="ms-2 navigate-button" @click="navigateToPage">작성</v-btn>
             </v-col>
         </v-row>
 
@@ -34,6 +36,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router"; // Import Vue Router
 import type { BreadcrumbItem } from "vuetify/lib/components/VBreadcrumbs/VBreadcrumbs";
 
 // State for selected location
@@ -75,12 +78,21 @@ const selectMenuItem = (item: BreadcrumbItem) => {
 const loaded = ref(false);
 const loading = ref(false);
 
+// Function to handle search click or enter key press
 function onClick() {
     loading.value = true;
     setTimeout(() => {
         loading.value = false;
         loaded.value = true;
     }, 2000);
+}
+
+// Router instance for navigation
+const router = useRouter();
+
+// Function to navigate to another page
+function navigateToPage() {
+    router.push('/new-page'); // Replace '/new-page' with the desired route path
 }
 </script>
 
@@ -97,13 +109,20 @@ function onClick() {
     margin-right: 8px;
 }
 
+.ms-2 {
+    margin-left: 8px;
+}
+
 .select-field {
     width: 150px;
-    /* Adjust as needed */
 }
 
 .search-field {
     flex-grow: 1;
+}
+
+.navigate-button {
+    min-width: 100px; /* Adjust button width */
 }
 
 :deep(.v-field__input) {
