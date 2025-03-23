@@ -17,6 +17,7 @@ import { createRouter, createWebHistory } from 'vue-router/auto'
 import MatchingPopup from '@/components/matching/MatchingPopup.vue'
 import CreateMatchingCommentForm from '@/components/matching/CreateMatchingCommentForm.vue'
 import Pagination from '@/components/common/Pagination.vue';
+import CreatePostForm from '@/components/board/CreatePostForm.vue';
 
 const routes = [
   // { path: '/', component: LogoTap },
@@ -28,6 +29,7 @@ const routes = [
   // { path: '/', component: CreateCommentForm },
   { path: '/test-popup', component: MatchingPopup },
   { path: '/test-comment', component: CreateMatchingCommentForm },
+  { path: '/test-createpost', component: CreatePostForm },
   { path: '/', component: Pagination }
 ]
 
