@@ -68,7 +68,7 @@
         {
           image: 'https://randomuser.me/api/portraits/women/86.jpg',
           title: '한로로',
-          subtitle: '지   |   ㅂ',
+          subtitle: 'ㅈㅣㅂ',
           career: '학생',
           introduction: '동글동글한 한로로입니다.',
         },
