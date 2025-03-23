@@ -22,15 +22,24 @@
     </div>
   </template>
   
-  <script setup>
+  <script lang="ts" setup>
   import { ref, computed, watch, onMounted } from 'vue'
+
+  // 아이템 타입 정의
+  interface Item {
+    id: number
+    title: string
+  }
   
   // 페이지네이션 상태 관리
   const page = ref(1)
   const itemsPerPage = ref(10)
+
+  // 샘플 데이터 (실제로는 API에서 가져올 수 있음) (items의 타입을 명시)
+  const items = ref<Item[]>([])
   
-  // 샘플 데이터 (실제로는 API에서 가져올 수 있음)
-  const items = ref([])
+  // // 샘플 데이터 (실제로는 API에서 가져올 수 있음)
+  // const items = ref([])
   
   // 초기 데이터 생성 (예시용)
   onMounted(() => {
@@ -56,11 +65,12 @@
   })
   
   // 페이지 변경 시 처리
-  const changePage = (newPage) => {
-    page.value = newPage
-    console.log(`페이지가 ${newPage}로 변경되었습니다.`)
-    // 여기서 필요한 경우 API 호출 등 추가 작업 수행
+  const changePage = (newPage: number) => {
+  page.value = newPage
+  console.log(`페이지가 ${newPage}로 변경되었습니다.`)
+  // 여기서 필요한 경우 API 호출 등 추가 작업 수행
   }
+
   
   // 페이지 변경 감시
   watch(page, (newPage) => {

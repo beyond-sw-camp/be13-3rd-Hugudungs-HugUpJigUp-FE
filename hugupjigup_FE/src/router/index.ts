@@ -7,13 +7,15 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router/auto'
 
-import MatchingPostCard from '@/components/matching/MatchingPostCard.vue';
-import CreateMatchingForm from '@/components/matching/CreateMatchingForm.vue';
-import UpdateMentorMenteeForm from '@/components/profile/UpdateMentorMenteeForm.vue';
-import CreateCommentForm from '@/components/board/CreateCommentForm.vue';
-import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
-import LogoTap from '@/components/common/LogoTap.vue';
-import PageTop from '@/components/common/PageTop.vue';
+// import MatchingPostCard from '@/components/matching/MatchingPostCard.vue';
+// import CreateMatchingForm from '@/components/matching/CreateMatchingForm.vue';
+// import UpdateMentorMenteeForm from '@/components/profile/UpdateMentorMenteeForm.vue';
+// import CreateCommentForm from '@/components/board/CreateCommentForm.vue';
+// import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
+// import LogoTap from '@/components/common/LogoTap.vue';
+// import PageTop from '@/components/common/PageTop.vue';
+import MatchingPopup from '@/components/matching/MatchingPopup.vue'
+import CreateMatchingCommentForm from '@/components/matching/CreateMatchingCommentForm.vue'
 import Pagination from '@/components/common/Pagination.vue';
 
 const routes = [
@@ -24,6 +26,8 @@ const routes = [
   // { path: '/', component: CreateMatchingForm },
   // { path: '/', component: UpdateMentorMenteeForm },
   // { path: '/', component: CreateCommentForm },
+  { path: '/test-popup', component: MatchingPopup },
+  { path: '/test-comment', component: CreateMatchingCommentForm },
   { path: '/', component: Pagination }
 ]
 
