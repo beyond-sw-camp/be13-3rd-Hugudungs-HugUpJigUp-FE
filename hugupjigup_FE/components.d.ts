@@ -22,6 +22,7 @@ declare module 'vue' {
     MatchingPostCard: typeof import('./src/components/matching/MatchingPostCard.vue')['default']
     MentorMenteeContext: typeof import('./src/components/profile/MentorMenteeContext.vue')['default']
     PageTop: typeof import('./src/components/common/PageTop.vue')['default']
+    Pagination: typeof import('./src/components/common/Pagination.vue')['default']
     PostsList: typeof import('./src/components/board/PostsList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
