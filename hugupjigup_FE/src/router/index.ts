@@ -8,18 +8,23 @@
 import { createRouter, createWebHistory } from 'vue-router/auto'
 
 import MatchingPostCard from '@/components/matching/MatchingPostCard.vue';
-import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
 import CreateMatchingForm from '@/components/matching/CreateMatchingForm.vue';
 import UpdateMentorMenteeForm from '@/components/profile/UpdateMentorMenteeForm.vue';
 import CreateCommentForm from '@/components/board/CreateCommentForm.vue';
+import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
+import LogoTap from '@/components/common/LogoTap.vue';
+import PageTop from '@/components/common/PageTop.vue';
+import Pagination from '@/components/common/Pagination.vue';
 
 const routes = [
-  { path: '/', component: MatchingPostCard },
-  { path: '/', component: MatchingCommentCard },
-  { path: '/', component: CreateMatchingForm },
-  { path: '/', component: UpdateMentorMenteeForm },
-  { path: '/', component: CreateCommentForm }
-
+  // { path: '/', component: LogoTap },
+  // { path: '/', component: PageTop },
+  // { path: '/', component: MatchingPostCard },
+  // { path: '/', component: MatchingCommentCard },
+  // { path: '/', component: CreateMatchingForm },
+  // { path: '/', component: UpdateMentorMenteeForm },
+  // { path: '/', component: CreateCommentForm },
+  { path: '/', component: Pagination }
 ]
 
 const router = createRouter({
