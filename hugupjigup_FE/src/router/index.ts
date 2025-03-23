@@ -18,6 +18,7 @@ import MatchingPopup from '@/components/matching/MatchingPopup.vue'
 import CreateMatchingCommentForm from '@/components/matching/CreateMatchingCommentForm.vue'
 import Pagination from '@/components/common/Pagination.vue';
 import CreatePostForm from '@/components/board/CreatePostForm.vue';
+import UpdateProfileForm from '@/components/profile/UpdateProfileForm.vue';
 
 const routes = [
   // { path: '/', component: LogoTap },
@@ -30,6 +31,7 @@ const routes = [
   { path: '/test-popup', component: MatchingPopup },
   { path: '/test-comment', component: CreateMatchingCommentForm },
   { path: '/test-createpost', component: CreatePostForm },
+  { path: '/test-updateprofile', component: UpdateProfileForm },
   { path: '/', component: Pagination }
 ]
 
