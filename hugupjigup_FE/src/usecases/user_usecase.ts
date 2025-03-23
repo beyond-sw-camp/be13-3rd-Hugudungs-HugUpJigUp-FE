@@ -1,4 +1,4 @@
-import apiClient from "./api_client";
+import apiClient  from "../data/api_client";
 
 export const isDuplicatedEmail = async (email: string): Promise<boolean> => {
   // if exist email return true, else return false
