@@ -18,6 +18,7 @@ import { createRouter, createWebHistory } from 'vue-router/auto'
 // import CreateMatchingCommentForm from '@/components/matching/CreateMatchingCommentForm.vue'
 // import Pagination from '@/components/common/Pagination.vue';
 import MentorMenteeContext from '@/components/profile/MentorMenteeContext.vue';
+import CountLabel from '@/components/profile/CountLabel.vue';
 
 const routes = [
   // { path: '/', component: LogoTap },
@@ -32,6 +33,7 @@ const routes = [
   // { path: '/', component: Pagination },
   // { path: '/context' component: MentorMenteeContext}
   { path: '/context', component: MentorMenteeContext },
+  { path: '/count', component: CountLabel },
 ]
 
 const router = createRouter({
