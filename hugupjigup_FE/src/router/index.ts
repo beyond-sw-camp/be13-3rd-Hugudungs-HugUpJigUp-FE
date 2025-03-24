@@ -24,6 +24,8 @@ import CountLabel from '@/components/profile/CountLabel.vue';
 
 // pages vue
 import UpdateMentorMenteeProfilePage from '@/pages/profile/UpdateMentorMenteeProfilePage.vue';
+import ApplyMatchingPage from '@/pages/matching/ApplyMatchingPage.vue';
+
 
 const routes = [
   { path: '/logotap', component: LogoTap },
@@ -40,6 +42,7 @@ const routes = [
   { path: '/pagination', component: Pagination },
   { path: '/context', component: MentorMenteeContext },
   { path: '/count', component: CountLabel },
+  { path: '/apply-matching', component: ApplyMatchingPage },
 
   //pages vue
   { path: '/update-mentormentee-profile', component: UpdateMentorMenteeProfilePage }

@@ -53,7 +53,7 @@ export default defineComponent({
   props: {
     isMentor: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   setup(props) {
