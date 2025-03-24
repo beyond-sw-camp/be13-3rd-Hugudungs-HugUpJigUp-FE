@@ -41,23 +41,6 @@
             class="rounded-input bold-placeholder"
           ></v-text-field>
   
-          <v-text-field
-            v-model="currentJob"
-            placeholder="현재 직무"
-            variant="outlined"
-            hide-details
-            density="comfortable"
-            class="rounded-input bold-placeholder"
-          ></v-text-field>
-  
-          <v-text-field
-            v-model="desiredJob"
-            placeholder="희망 직무"
-            variant="outlined"
-            hide-details
-            density="comfortable"
-            class="rounded-input bold-placeholder"
-          ></v-text-field>
         </v-form>
   
         <!-- 버튼: 카드 내부에 포함 -->
@@ -75,8 +58,6 @@
   const name = ref('')
   const email = ref('')
   const password = ref('')
-  const currentJob = ref('')
-  const desiredJob = ref('')
   </script>
   
   <style scoped>
