@@ -21,6 +21,8 @@ import CreatePostForm from '@/components/board/CreatePostForm.vue';
 import UpdateProfileForm from '@/components/profile/UpdateProfileForm.vue';
 import MentorMenteeContext from '@/components/profile/MentorMenteeContext.vue';
 import CountLabel from '@/components/profile/CountLabel.vue';
+import CreateMatchingCommentPage from '@/pages/matching/CreateMatchingCommentPage.vue';
+
 
 
 // pages vue
@@ -57,6 +59,7 @@ const routes = [
   { path: '/pagination', component: Pagination },
   { path: '/context', component: MentorMenteeContext },
   { path: '/count', component: CountLabel },
+  { path: '/create-matching-comment', component: CreateMatchingCommentPage },
   { path: '/apply-matching-page', component: ApplyMatchingPage },
   { path: '/decision', component: DecisionMatchingPage },
 
@@ -66,6 +69,7 @@ const routes = [
   { path: '/update-profile', component: UpdateProfilePage },
   { path: '/create-post', component: CreateFreePostPage },
   { path: '/matching', component: MatchingPage },
+
 
 ]
 
