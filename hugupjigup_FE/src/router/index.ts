@@ -12,7 +12,6 @@ import CreateMatchingForm from '@/components/matching/CreateMatchingForm.vue';
 import UpdateMentorMenteeForm from '@/components/profile/UpdateMentorMenteeForm.vue';
 import CreateCommentForm from '@/components/board/CreateCommentForm.vue';
 import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
-import PageTop from '@/components/common/PageTop.vue';
 import Layout from '@/components/common/Layout.vue';
 import MatchingPopup from '@/components/matching/MatchingPopup.vue'
 import CreateMatchingCommentForm from '@/components/matching/CreateMatchingCommentForm.vue'
@@ -44,8 +43,6 @@ const routes = [
     path: '/',
     component: Layout,
   },
-  { path: '/logotap', component: LogoTap },
-  { path: '/pagetop', component: PageTop },
   { path: '/matching-post-card', component: MatchingPostCard },
   { path: '/matching-comment-card', component: MatchingCommentCard },
   { path: '/create-matching-form', component: CreateMatchingForm },

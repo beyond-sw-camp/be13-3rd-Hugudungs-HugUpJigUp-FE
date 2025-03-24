@@ -21,7 +21,6 @@
   </template>
   
   <script setup lang="ts">
-  import LogoTap from '@/components/common/LogoTap.vue'
   import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
   import SearchActionBar from '@/components/common/SearchActionBar.vue'
   import MatchingPagination from '@/components/common/MatchingPagination.vue'

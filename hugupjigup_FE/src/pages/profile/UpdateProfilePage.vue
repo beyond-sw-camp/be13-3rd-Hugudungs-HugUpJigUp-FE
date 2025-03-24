@@ -10,7 +10,6 @@
   </template>
   
   <script lang="ts" setup>
-  import LogoTap from '@/components/common/LogoTap.vue'
   import UpdateProfileForm from '@/components/profile/UpdateProfileForm.vue'
   </script>
   
