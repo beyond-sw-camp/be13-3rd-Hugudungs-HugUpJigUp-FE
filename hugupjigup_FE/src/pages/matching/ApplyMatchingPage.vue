@@ -1,49 +1,65 @@
 <template>
     <v-app>
       <v-container>
-        <v-card>
-          <!-- 대제목 -->
-          <div class="main-title">{{ title }}</div>
+        <v-btn color="primary" @click="dialog = true">
+          자세히 보기 (팝업 확인용)
+        </v-btn>
   
-          <div class="profile-container">
-            <!-- 첫 번째 섹션 -->
-            <div class="profile-section">
-              <v-avatar size="80" class="mr-3">
-                <v-img :src="profileImage" alt="프로필 이미지" aspect-ratio="1"></v-img>
-              </v-avatar>
-              <div class="profile-info">
-                <div class="profile-name">{{ name }}</div>
-                <div class="profile-details">
-                  경력: {{ career }}<br>
-                  현직: {{ job }}
+        <v-dialog v-model="dialog" max-width="1000">
+          <v-card color="white" style="position: relative;">
+            <!-- 닫기 버튼 -->
+            <v-icon
+              icon="mdi-close"
+              class="text-black"
+              style="position: absolute; top: 16px; right: 16px; cursor: pointer;"
+              @click="dialog = false"
+            />
+  
+            <v-card-text class="pa-4">
+              <!-- 이전에 만들었던 프로필 컴포넌트 내용 -->
+              <div class="main-title">머피의 법칙(Rock ver)</div>
+  
+              <div class="profile-container">
+                <!-- 첫 번째 섹션 -->
+                <div class="profile-section">
+                  <v-avatar size="80" class="mr-3">
+                    <v-img :src="profileImage" alt="프로필 이미지" aspect-ratio="1"></v-img>
+                  </v-avatar>
+                  <div class="profile-info">
+                    <div class="profile-name">{{ name }}</div>
+                    <div class="profile-details">
+                      경력: {{ career }}<br>
+                      현직: {{ job }}
+                    </div>
+                    <div class="profile-description-short">
+                      {{ descriptionShort }}
+                    </div>
+                  </div>
                 </div>
-                <div class="profile-description-short">
-                  {{ descriptionShort }}
+  
+                <!-- 두 번째 섹션 -->
+                <div class="info-section">
+                  <div class="info-container">
+                    <div class="career-title">● 경력</div>
+                    <div class="profile-career">{{ careerDetail }}</div>
+                  </div>
+                  <div class="info-container">
+                    <div class="description-title">● 자기소개</div>
+                    <div class="profile-description">
+                      {{ description }}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
   
-            <!-- 두 번째 섹션 -->
-            <div class="info-section">
-              <div class="info-container">
-                <div class="career-title">● 경력</div>
-                <div class="profile-career">{{ careerDetail }}</div>
+              <!-- 버튼 추가 -->
+              <div class="button-container">
+                <v-btn class="accept-button" @click="accept">수락</v-btn>
+                <v-btn class="reject-button" @click="reject">거절</v-btn>
               </div>
-              <div class="info-container">
-                <div class="description-title">● 자기소개</div>
-                <div class="profile-description">
-                  {{ description }}
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <!-- 버튼 추가 -->
-          <div class="button-container">
-            <v-btn class="accept-button" @click="accept">수락</v-btn>
-            <v-btn class="reject-button" @click="reject">거절</v-btn>
-          </div>
-        </v-card>
+            </v-card-text>
+          </v-card>
+        </v-dialog>
       </v-container>
     </v-app>
   </template>
@@ -52,16 +68,22 @@
   import { defineComponent, ref } from 'vue';
   
   export default defineComponent({
-    name: 'ProfileComponent',
+    name: 'ProfilePopupComponent',
     setup() {
+      const dialog = ref(false);
+  
       const title = ref('머피의 법칙(Rock ver)');
       const profileImage = ref('https://picsum.photos/id/1028/80/80');
       const name = ref('한로로');
       const career = ref('3년차');
       const job = ref('가수');
-      const descriptionShort = ref("'한로로'라는 예명은 고등학교 수학 교육과정 중 지수와 로그범위 때문에 학창 시절 때 본명인 한지수 대신 한로그라고 불렸는데, 그래서 활동도 '한로그'로 하려 했으나 너무 수학적으로 다가올 것 같다며 동글동글한 느낌으로 한로로로 지었다고 한다.");
+      const descriptionShort = ref(
+        "'한로로'라는 예명은 고등학교 수학 교육과정 중 지수와 로그범위 때문에 학창 시절 때 본명인 한지수 대신 한로그라고 불렸는데, 그래서 활동도 '한로그'로 하려 했으나 너무 수학적으로 다가올 것 같다며 동글동글한 느낌으로 한로로로 지었다고 한다."
+      );
       const careerDetail = ref('어센틱');
-      const description = ref("그냥 단순히 음악을 하고 싶어했었던 한로로는 인스타그램을 하다가 자연스럽게 '초승'이라는 아티스트의 뮤직비디오를 보고 뮤직비디오의 분위기에 매료되어 당시 음악을 배워나가고 싶다는 마음으로 Studio MOS에 연락하게 되었다.");
+      const description = ref(
+        "그냥 단순히 음악을 하고 싶어했었던 한로로는 인스타그램을 하다가 자연스럽게 '초승'이라는 아티스트의 뮤직비디오를 보고 뮤직비디오의 분위기에 매료되어 당시 음악을 배워나가고 싶다는 마음으로 Studio MOS에 연락하게 되었다."
+      );
   
       const accept = () => {
         // 수락 로직
@@ -74,6 +96,7 @@
       };
   
       return {
+        dialog,
         title,
         profileImage,
         name,
@@ -90,6 +113,24 @@
   </script>
   
   <style scoped>
+  /* 추가된 스타일 */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .accept-button {
+    background-color: green;
+    color: white;
+    margin-right: 10px;
+  }
+  
+  .reject-button {
+    background-color: red;
+    color: white;
+  }
+  
   .main-title {
     font-size: 1.5rem;
     font-weight: bold;
@@ -155,24 +196,6 @@
   .profile-description {
     font-size: 1rem;
     line-height: 1.4;
-  }
-  
-  /* 버튼 스타일 */
-  .button-container {
-    display: flex;
-    justify-content: center; /* 가운데 정렬 */
-    padding: 20px;
-  }
-  
-  .accept-button {
-    background-color: green;
-    color: white;
-    margin-right: 10px;
-  }
-  
-  .reject-button {
-    background-color: red;
-    color: white;
   }
   </style>
   
