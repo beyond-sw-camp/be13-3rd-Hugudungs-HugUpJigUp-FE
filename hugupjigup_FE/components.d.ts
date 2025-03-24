@@ -21,11 +21,13 @@ declare module 'vue' {
     MatchingPopup: typeof import('./src/components/matching/MatchingPopup.vue')['default']
     MatchingPostCard: typeof import('./src/components/matching/MatchingPostCard.vue')['default']
     MentorMenteeContext: typeof import('./src/components/profile/MentorMenteeContext.vue')['default']
+    PageBreadcrumb: typeof import('./src/components/common/PageBreadcrumb.vue')['default']
     PageTop: typeof import('./src/components/common/PageTop.vue')['default']
     Pagination: typeof import('./src/components/common/Pagination.vue')['default']
     PostsList: typeof import('./src/components/board/PostsList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SearchActionBar: typeof import('./src/components/common/SearchActionBar.vue')['default']
     UpdateMentorMenteeForm: typeof import('./src/components/profile/UpdateMentorMenteeForm.vue')['default']
     UpdateProfileForm: typeof import('./src/components/profile/UpdateProfileForm.vue')['default']
   }

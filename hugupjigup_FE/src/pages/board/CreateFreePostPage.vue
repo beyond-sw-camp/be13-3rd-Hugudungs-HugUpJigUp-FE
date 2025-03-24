@@ -1,7 +1,8 @@
 <template>
     <v-container fluid>
       <!-- 상단 로고 영역 -->
-      <LogoTap />
+      <LogoTap/>
+      <PageBreadcrumb/>
   
       <!-- 자유 게시판 작성 폼 -->
       <v-row justify="center">
@@ -13,7 +14,8 @@
   </template>
   
   <script lang="ts" setup>
-  import LogoTap from '@/components/common/LogoTap.vue'
+  import LogoTap from '@/components/common/LogoTap.vue';
+  import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue';
   import CreatePostForm from '@/components/board/CreatePostForm.vue'
   </script>
   

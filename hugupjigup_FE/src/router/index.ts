@@ -13,7 +13,6 @@ import { createRouter, createWebHistory } from 'vue-router/auto'
 // import CreateCommentForm from '@/components/board/CreateCommentForm.vue';
 // import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
 // import LogoTap from '@/components/common/LogoTap.vue';
-// import PageTop from '@/components/common/PageTop.vue';
 import MatchingPopup from '@/components/matching/MatchingPopup.vue'
 import CreateMatchingCommentForm from '@/components/matching/CreateMatchingCommentForm.vue'
 import Pagination from '@/components/common/Pagination.vue';
@@ -27,7 +26,6 @@ import CreateFreePostPage from '@/pages/board/CreateFreePostPage.vue';
 
 const routes = [
   // { path: '/', component: LogoTap },
-  // { path: '/', component: PageTop },
   // { path: '/', component: MatchingPostCard },
   // { path: '/', component: MatchingCommentCard },
   // { path: '/', component: CreateMatchingForm },
