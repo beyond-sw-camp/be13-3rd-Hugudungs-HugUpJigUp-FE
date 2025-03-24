@@ -13,8 +13,7 @@
     </v-container>
   </template>
   
-  <script lang="ts" setup>
-  import LogoTap from '@/components/common/LogoTap.vue';
+  <script lang="ts" setup>  
   import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue';
   import CreatePostForm from '@/components/board/CreatePostForm.vue'
   </script>
