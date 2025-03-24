@@ -47,10 +47,12 @@ export const updateFreeBoard = async (id: number, title: string, content: string
   if (response.status !== 200) {
     throw new Error("Failed to update free board");
   }
+
   return response.data.data;
 }
 
 export const deleteFreeBoard = async (id: number): Promise<boolean> => {
   const response = await apiClient.delete(`/api/v1/free/${id}`);
+
   return response.data.result;
 }

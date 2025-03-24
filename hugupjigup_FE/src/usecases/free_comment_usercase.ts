@@ -7,6 +7,7 @@ export const createFreeComment =
     if (response.status !== 201) {
       throw new Error("Failed to create free comment");
     }
+
     return response.data.data;
 }
 
@@ -15,11 +16,12 @@ export const updateFreeComment = async (freeId: number, commentId: number, conte
   if (response.status !== 200) {
     throw new Error("Failed to update free comment");
   }
+
   return response.data.data;
 }
 
 export const deleteFreeComment = async (freeId: number, commentId: number): Promise<boolean> => {
   const response = await apiClient.delete(`/api/v1/free/${freeId}/comment/${commentId}`);
-  console.log(response);
+
   return response.data.result;
 }
