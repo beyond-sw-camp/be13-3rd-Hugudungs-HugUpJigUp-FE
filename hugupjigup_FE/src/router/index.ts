@@ -22,6 +22,8 @@ import UpdateProfileForm from '@/components/profile/UpdateProfileForm.vue';
 import MentorMenteeContext from '@/components/profile/MentorMenteeContext.vue';
 import CountLabel from '@/components/profile/CountLabel.vue';
 
+import UpdateProfilePage from '@/pages/profile/UpdateProfilePage.vue'
+
 const routes = [
   // { path: '/', component: LogoTap },
   // { path: '/', component: PageTop },
@@ -37,6 +39,8 @@ const routes = [
   { path: '/', component: Pagination },
   { path: '/context', component: MentorMenteeContext },
   { path: '/count', component: CountLabel },
+  
+  { path: '/update-profile', component: UpdateProfilePage },
 ]
 
 const router = createRouter({
