@@ -19,6 +19,8 @@ import CreateMatchingCommentForm from '@/components/matching/CreateMatchingComme
 import Pagination from '@/components/common/Pagination.vue';
 import CreatePostForm from '@/components/board/CreatePostForm.vue';
 import UpdateProfileForm from '@/components/profile/UpdateProfileForm.vue';
+import MentorMenteeContext from '@/components/profile/MentorMenteeContext.vue';
+import CountLabel from '@/components/profile/CountLabel.vue';
 
 const routes = [
   // { path: '/', component: LogoTap },
@@ -32,7 +34,9 @@ const routes = [
   { path: '/test-comment', component: CreateMatchingCommentForm },
   { path: '/test-createpost', component: CreatePostForm },
   { path: '/test-updateprofile', component: UpdateProfileForm },
-  { path: '/', component: Pagination }
+  { path: '/', component: Pagination },
+  { path: '/context', component: MentorMenteeContext },
+  { path: '/count', component: CountLabel },
 ]
 
 const router = createRouter({

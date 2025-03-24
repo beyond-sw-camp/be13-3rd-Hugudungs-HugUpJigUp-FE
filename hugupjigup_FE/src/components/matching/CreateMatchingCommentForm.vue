@@ -61,7 +61,7 @@ const comment = ref('')
 
 const mentoringOptions = ref([
     '머피의 법칙',
-    '지ㅣ브',
+    'ㅈㅣㅂ',
     'Cool With you',
     '참여한 멘토링만 표시',
 ])
