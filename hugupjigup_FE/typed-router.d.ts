@@ -19,5 +19,23 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
+    '/board/CreateFreePostPage': RouteRecordInfo<'/board/CreateFreePostPage', '/board/CreateFreePostPage', Record<never, never>, Record<never, never>>,
+    '/board/CreateNoticePostPage': RouteRecordInfo<'/board/CreateNoticePostPage', '/board/CreateNoticePostPage', Record<never, never>, Record<never, never>>,
+    '/board/FreeBoardPage': RouteRecordInfo<'/board/FreeBoardPage', '/board/FreeBoardPage', Record<never, never>, Record<never, never>>,
+    '/board/FreePostPage': RouteRecordInfo<'/board/FreePostPage', '/board/FreePostPage', Record<never, never>, Record<never, never>>,
+    '/board/NoticeBoardPage': RouteRecordInfo<'/board/NoticeBoardPage', '/board/NoticeBoardPage', Record<never, never>, Record<never, never>>,
+    '/board/NoticePostPage': RouteRecordInfo<'/board/NoticePostPage', '/board/NoticePostPage', Record<never, never>, Record<never, never>>,
+    '/matching/ApplyMatchingPage': RouteRecordInfo<'/matching/ApplyMatchingPage', '/matching/ApplyMatchingPage', Record<never, never>, Record<never, never>>,
+    '/matching/CreateMatchingCommentPage': RouteRecordInfo<'/matching/CreateMatchingCommentPage', '/matching/CreateMatchingCommentPage', Record<never, never>, Record<never, never>>,
+    '/matching/CreateMatchingPostPage': RouteRecordInfo<'/matching/CreateMatchingPostPage', '/matching/CreateMatchingPostPage', Record<never, never>, Record<never, never>>,
+    '/matching/DecisionMatchingPage': RouteRecordInfo<'/matching/DecisionMatchingPage', '/matching/DecisionMatchingPage', Record<never, never>, Record<never, never>>,
+    '/matching/MatchingCommentPage': RouteRecordInfo<'/matching/MatchingCommentPage', '/matching/MatchingCommentPage', Record<never, never>, Record<never, never>>,
+    '/matching/MatchingPage': RouteRecordInfo<'/matching/MatchingPage', '/matching/MatchingPage', Record<never, never>, Record<never, never>>,
+    '/matching/MatchingPostPage': RouteRecordInfo<'/matching/MatchingPostPage', '/matching/MatchingPostPage', Record<never, never>, Record<never, never>>,
+    '/profile/UpdateMentorMenteeProfilePage': RouteRecordInfo<'/profile/UpdateMentorMenteeProfilePage', '/profile/UpdateMentorMenteeProfilePage', Record<never, never>, Record<never, never>>,
+    '/profile/UpdateProfilePage': RouteRecordInfo<'/profile/UpdateProfilePage', '/profile/UpdateProfilePage', Record<never, never>, Record<never, never>>,
+    '/profile/UserProfilePage': RouteRecordInfo<'/profile/UserProfilePage', '/profile/UserProfilePage', Record<never, never>, Record<never, never>>,
+    '/sign/SignInPage': RouteRecordInfo<'/sign/SignInPage', '/sign/SignInPage', Record<never, never>, Record<never, never>>,
+    '/sign/SignUpPage': RouteRecordInfo<'/sign/SignUpPage', '/sign/SignUpPage', Record<never, never>, Record<never, never>>,
   }
 }
