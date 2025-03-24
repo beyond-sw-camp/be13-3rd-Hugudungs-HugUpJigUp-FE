@@ -31,6 +31,7 @@ export default [
         },
       ],
       'vue/multi-word-component-names': 'off',
+      'vue/script-setup-uses-vars': 'error',
     }
   }
 ]
