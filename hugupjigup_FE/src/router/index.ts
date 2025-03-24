@@ -22,6 +22,8 @@ import MentorMenteeContext from '@/components/profile/MentorMenteeContext.vue';
 import CountLabel from '@/components/profile/CountLabel.vue';
 import CreateMatchingCommentPage from '@/pages/matching/CreateMatchingCommentPage.vue';
 
+import InsertTextForm from '@/components/sign/InsertTextForm.vue';
+
 
 
 // pages vue
@@ -59,6 +61,8 @@ const routes = [
   { path: '/create-matching-comment', component: CreateMatchingCommentPage },
   { path: '/apply-matching-page', component: ApplyMatchingPage },
   { path: '/decision', component: DecisionMatchingPage },
+
+  { path: '/insert-text', component: InsertTextForm },
 
 
   //pages vue

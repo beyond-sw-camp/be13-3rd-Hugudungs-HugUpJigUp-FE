@@ -16,7 +16,6 @@ declare module 'vue' {
     CustomHeader: typeof import('./src/components/common/CustomHeader.vue')['default']
     InsertTextForm: typeof import('./src/components/sign/InsertTextForm.vue')['default']
     Layout: typeof import('./src/components/common/Layout.vue')['default']
-    LogoTap: typeof import('./src/components/common/LogoTap.vue')['default']
     MatchingCommentCard: typeof import('./src/components/matching/MatchingCommentCard.vue')['default']
     MatchingPagination: typeof import('./src/components/common/MatchingPagination.vue')['default']
     MatchingPopup: typeof import('./src/components/matching/MatchingPopup.vue')['default']
