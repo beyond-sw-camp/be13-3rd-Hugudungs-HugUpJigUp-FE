@@ -5,21 +5,21 @@
         <v-col cols="12" sm="6" md="4">
           <v-card class="profile-edit-card">
             <v-card-text>
-              <h2 class="profile-edit-title">멘토/멘티 프로필 수정</h2>
+              <h2 class="profile-edit-title">{{ profileTitle }} 프로필 수정</h2>
 
               <v-text-field
                 v-model="currentJob"
-                :label="currentJobLabel"
+                :label="jobLabel"
                 outlined
               ></v-text-field>
               <v-text-field
                 v-model="introduction"
-                :label="introductionLabel"
+                label="자기소개"
                 outlined
               ></v-text-field>
               <v-text-field
                 v-model="career"
-                :label="careerLabel"
+                label="경력"
                 outlined
               ></v-text-field>
 
@@ -46,18 +46,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, computed } from "vue";
 
 export default defineComponent({
   name: "ProfileEditForm",
-  setup() {
+  props: {
+    isMentor: {
+      type: Boolean,
+      default: true
+    }
+  },
+  setup(props) {
     const currentJob = ref("");
     const introduction = ref("");
     const career = ref("");
 
-    const currentJobLabel = ref("현재 직무");
-    const introductionLabel = ref("자기소개");
-    const careerLabel = ref("경력");
+    const profileTitle = computed(() => props.isMentor ? "멘토" : "멘티");
+    const jobLabel = computed(() => props.isMentor ? "현재 직무" : "희망 직무");
 
     const cancelEdit = () => {
       alert("수정을 취소했습니다.");
@@ -71,9 +76,8 @@ export default defineComponent({
       currentJob,
       introduction,
       career,
-      currentJobLabel,
-      introductionLabel,
-      careerLabel,
+      profileTitle,
+      jobLabel,
       cancelEdit,
       completeEdit,
     };
