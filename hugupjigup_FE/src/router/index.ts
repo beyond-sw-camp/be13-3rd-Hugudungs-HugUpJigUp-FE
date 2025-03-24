@@ -11,7 +11,6 @@ import CreateMatchingForm from '@/components/matching/CreateMatchingForm.vue';
 import UpdateMentorMenteeForm from '@/components/profile/UpdateMentorMenteeForm.vue';
 import CreateCommentForm from '@/components/board/CreateCommentForm.vue';
 import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
-import LogoTap from '@/components/common/LogoTap.vue';
 import PageTop from '@/components/common/PageTop.vue';
 import Layout from '@/components/common/Layout.vue';
 import MatchingPopup from '@/components/matching/MatchingPopup.vue'
@@ -25,13 +24,16 @@ import CountLabel from '@/components/profile/CountLabel.vue';
 
 // pages vue
 import UpdateMentorMenteeProfilePage from '@/pages/profile/UpdateMentorMenteeProfilePage.vue';
+import ApplyMatchingPage from '@/pages/matching/ApplyMatchingPage.vue';
 import UpdateProfilePage from '@/pages/profile/UpdateProfilePage.vue'
 import CreateFreePostPage from '@/pages/board/CreateFreePostPage.vue';
 import MatchingPage from '@/pages/matching/MatchingPage.vue';
 
 
 
+
 const routes = [
+  
   {
     path: '/',
     component: Layout,
@@ -42,7 +44,7 @@ const routes = [
   { path: '/matching-comment-card', component: MatchingCommentCard },
   { path: '/create-matching-form', component: CreateMatchingForm },
   { path: '/update-mentormentee-form', component: UpdateMentorMenteeForm },
-  { path: '/create-commment-from', component: CreateCommentForm },
+  { path: '/create-comment-from', component: CreateCommentForm },
   { path: '/test-popup', component: MatchingPopup },
   { path: '/test-comment', component: CreateMatchingCommentForm },
   { path: '/test-createpost', component: CreatePostForm },
@@ -50,6 +52,8 @@ const routes = [
   { path: '/pagination', component: Pagination },
   { path: '/context', component: MentorMenteeContext },
   { path: '/count', component: CountLabel },
+  { path: '/apply-matching-page', component: ApplyMatchingPage },
+  // { path: '/decision', component: DecisionMatchingPage },
 
 
   //pages vue
