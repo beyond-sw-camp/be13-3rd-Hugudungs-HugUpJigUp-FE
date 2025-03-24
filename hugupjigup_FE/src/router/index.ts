@@ -23,6 +23,7 @@ import CountLabel from '@/components/profile/CountLabel.vue';
 
 import UpdateProfilePage from '@/pages/profile/UpdateProfilePage.vue'
 import CreateFreePostPage from '@/pages/board/CreateFreePostPage.vue';
+import MatchingPage from '@/pages/matching/MatchingPage.vue';
 
 const routes = [
   // { path: '/', component: LogoTap },
@@ -41,6 +42,7 @@ const routes = [
   
   { path: '/update-profile', component: UpdateProfilePage },
   { path: '/create-post', component: CreateFreePostPage },
+  { path: '/matching', component: MatchingPage },
 ]
 
 const router = createRouter({
