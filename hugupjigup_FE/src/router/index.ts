@@ -14,9 +14,11 @@ import { createRouter, createWebHistory } from 'vue-router/auto'
 // import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
 // import LogoTap from '@/components/common/LogoTap.vue';
 // import PageTop from '@/components/common/PageTop.vue';
-import MatchingPopup from '@/components/matching/MatchingPopup.vue'
-import CreateMatchingCommentForm from '@/components/matching/CreateMatchingCommentForm.vue'
-import Pagination from '@/components/common/Pagination.vue';
+// import MatchingPopup from '@/components/matching/MatchingPopup.vue'
+// import CreateMatchingCommentForm from '@/components/matching/CreateMatchingCommentForm.vue'
+// import Pagination from '@/components/common/Pagination.vue';
+import MentorMenteeContext from '@/components/profile/MentorMenteeContext.vue';
+import CountLabel from '@/components/profile/CountLabel.vue';
 
 const routes = [
   // { path: '/', component: LogoTap },
@@ -26,9 +28,12 @@ const routes = [
   // { path: '/', component: CreateMatchingForm },
   // { path: '/', component: UpdateMentorMenteeForm },
   // { path: '/', component: CreateCommentForm },
-  { path: '/test-popup', component: MatchingPopup },
-  { path: '/test-comment', component: CreateMatchingCommentForm },
-  { path: '/', component: Pagination }
+  // { path: '/test-popup', component: MatchingPopup },
+  // { path: '/test-comment', component: CreateMatchingCommentForm },
+  // { path: '/', component: Pagination },
+  // { path: '/context' component: MentorMenteeContext}
+  { path: '/context', component: MentorMenteeContext },
+  { path: '/count', component: CountLabel },
 ]
 
 const router = createRouter({
