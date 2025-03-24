@@ -1,4 +1,5 @@
 import type { Comment } from "./comment";
+import type {Pageable} from "./pageable";
 
 export type BoardType = 'NOTICE' | 'FREE';
 
@@ -9,7 +10,7 @@ export type CreateFreeBoardDto = {
   userId: number;
 };
 
-export type CreateFreeBoardResponseDto = {
+export type FreeBoardResponseDto = {
   id: number;
   boardType: BoardType;
   title: string;
@@ -18,9 +19,9 @@ export type CreateFreeBoardResponseDto = {
   views: number;
   createdAt: string;
   updatedAt: string;
-  comments: Comment; // comment 는 아직 구현 하지 않았기 때문에 null
+  comments: Comment[];
 };
 
-export type GetFreeBoardListResponseDto = {
+export type SearchType = 'title' | 'content' | 'all';
 
-};
+export type GetFreeBoardListResponseDto = Pageable<FreeBoardResponseDto>;
