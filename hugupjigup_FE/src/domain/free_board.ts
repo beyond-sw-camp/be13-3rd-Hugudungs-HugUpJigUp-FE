@@ -1,7 +1,7 @@
 import type { Comment } from "./comment";
 import type {Pageable} from "./pageable";
 
-export type BoardType = 'NOTICE' | 'FREE';
+export type BoardType = 'NOTICE' | 'FREE' | 'MATCHING';
 
 export type CreateFreeBoardDto = {
   title: string;
