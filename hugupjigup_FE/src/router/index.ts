@@ -7,13 +7,12 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router/auto'
 
+import MatchingPostCard from '@/components/matching/MatchingPostCard.vue';
+import CreateMatchingForm from '@/components/matching/CreateMatchingForm.vue';
+import UpdateMentorMenteeForm from '@/components/profile/UpdateMentorMenteeForm.vue';
+import CreateCommentForm from '@/components/board/CreateCommentForm.vue';
+import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
 import Layout from '@/components/common/Layout.vue';
-// import MatchingPostCard from '@/components/matching/MatchingPostCard.vue';
-// import CreateMatchingForm from '@/components/matching/CreateMatchingForm.vue';
-// import UpdateMentorMenteeForm from '@/components/profile/UpdateMentorMenteeForm.vue';
-// import CreateCommentForm from '@/components/board/CreateCommentForm.vue';
-// import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
-// import LogoTap from '@/components/common/LogoTap.vue';
 import MatchingPopup from '@/components/matching/MatchingPopup.vue'
 import CreateMatchingCommentForm from '@/components/matching/CreateMatchingCommentForm.vue'
 import Pagination from '@/components/common/Pagination.vue';
@@ -21,39 +20,60 @@ import CreatePostForm from '@/components/board/CreatePostForm.vue';
 import UpdateProfileForm from '@/components/profile/UpdateProfileForm.vue';
 import MentorMenteeContext from '@/components/profile/MentorMenteeContext.vue';
 import CountLabel from '@/components/profile/CountLabel.vue';
+import CreateMatchingCommentPage from '@/pages/matching/CreateMatchingCommentPage.vue';
 
+
+
+// pages vue
+import DecisionMatchingPage from '@/pages/matching/DecisionMatchingPage.vue';
+import UpdateMentorMenteeProfilePage from '@/pages/profile/UpdateMentorMenteeProfilePage.vue';
+import ApplyMatchingPage from '@/pages/matching/ApplyMatchingPage.vue';
 import UpdateProfilePage from '@/pages/profile/UpdateProfilePage.vue'
 import CreateFreePostPage from '@/pages/board/CreateFreePostPage.vue';
 import MatchingPage from '@/pages/matching/MatchingPage.vue';
 
+
+
+
+
 const routes = [
+  
+
   {
     path: '/',
     component: Layout,
   },
-  // { path: '/', component: LogoTap },
-  // { path: '/', component: MatchingPostCard },
-  // { path: '/', component: MatchingCommentCard },
-  // { path: '/', component: CreateMatchingForm },
-  // { path: '/', component: UpdateMentorMenteeForm },
-  // { path: '/', component: CreateCommentForm },
+  { path: '/matching-post-card', component: MatchingPostCard },
+  { path: '/matching-comment-card', component: MatchingCommentCard },
+  { path: '/create-matching-form', component: CreateMatchingForm },
+  { path: '/update-mentormentee-form', component: UpdateMentorMenteeForm },
+
+  { path: '/create-commment-from', component: CreateCommentForm },
   { path: '/test-popup', component: MatchingPopup },
   { path: '/test-comment', component: CreateMatchingCommentForm },
   { path: '/test-createpost', component: CreatePostForm },
   { path: '/test-updateprofile', component: UpdateProfileForm },
-  { path: '/', component: Pagination },
+  { path: '/pagination', component: Pagination },
   { path: '/context', component: MentorMenteeContext },
   { path: '/count', component: CountLabel },
-  
+  { path: '/create-matching-comment', component: CreateMatchingCommentPage },
+  { path: '/apply-matching-page', component: ApplyMatchingPage },
+  { path: '/decision', component: DecisionMatchingPage },
+
+
+  //pages vue
+  { path: '/update-mentormentee-profile', component: UpdateMentorMenteeProfilePage },
   { path: '/update-profile', component: UpdateProfilePage },
   { path: '/create-post', component: CreateFreePostPage },
   { path: '/matching', component: MatchingPage },
+
+
 ]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-});
+})
 
 // Workaround for https://github.com/vitejs/vite/issues/11804
 router.onError((err, to) => {
