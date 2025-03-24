@@ -1,3 +1,5 @@
+import type { Comment } from "./comment";
+
 export type BoardType = 'NOTICE' | 'FREE';
 
 export type CreateFreeBoardDto = {
@@ -16,5 +18,9 @@ export type CreateFreeBoardResponseDto = {
   views: number;
   createdAt: string;
   updatedAt: string;
-  comments: null; // comment 는 아직 구현 하지 않았기 때문에 null
+  comments: Comment; // comment 는 아직 구현 하지 않았기 때문에 null
+};
+
+export type GetFreeBoardListResponseDto = {
+
 };

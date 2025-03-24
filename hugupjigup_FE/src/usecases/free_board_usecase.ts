@@ -8,5 +8,6 @@ export const createFreeBoard =
     if (response.status !== 201) {
       throw new Error("Failed to create free board");
     }
+
     return response.data.data;
   };
