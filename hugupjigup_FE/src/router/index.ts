@@ -23,6 +23,7 @@ import MentorMenteeContext from '@/components/profile/MentorMenteeContext.vue';
 import CountLabel from '@/components/profile/CountLabel.vue';
 
 import UpdateProfilePage from '@/pages/profile/UpdateProfilePage.vue'
+import CreateFreePostPage from '@/pages/board/CreateFreePostPage.vue';
 
 const routes = [
   // { path: '/', component: LogoTap },
@@ -41,6 +42,7 @@ const routes = [
   { path: '/count', component: CountLabel },
   
   { path: '/update-profile', component: UpdateProfilePage },
+  { path: '/create-post', component: CreateFreePostPage },
 ]
 
 const router = createRouter({
