@@ -3,3 +3,18 @@ export type CreateUserDto = {
   password: string;
   nickname: string;
 }
+
+export type VerificationOtpDto = {
+  email: string
+  otp: string
+}
+
+export type SignInDto = {
+  email: string
+  password: string
+}
+
+export type SignInResponseDto = {
+  accessToken: string
+  refreshToken: string
+}
