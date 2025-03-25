@@ -62,6 +62,7 @@ export const signIn = async (signInDto: SignInDto): Promise<boolean> => {
 export const refreshToken = async (): Promise<boolean> => {
   // 실제 구동 환경에서 테스트 필요
   const response = await apiClient.post('/api/v1/auth/refresh',
+    {},
     {
       headers: {Authorization: `Bearer ${localStorage.getItem('refreshToken')}`},
     });
@@ -77,13 +78,12 @@ export const refreshToken = async (): Promise<boolean> => {
 }
 
 export const logout = async (): Promise<boolean> => {
+  console.log(localStorage.getItem('accessToken'));
   // 실제 구동 환경에서 테스트 필요
-  const response = await apiClient.post('/api/v1/auth/logout',
-    {
-      headers: {Authorization: `Bearer ${localStorage.getItem('accessToken')}`},
-    });
+  const response = await apiClient.post('/api/v1/auth/logout');
 
   if (response.status >= 300) {
+    console.log(response);
     throw new Error('Failed to logout');
   }
 
