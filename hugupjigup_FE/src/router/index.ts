@@ -12,7 +12,6 @@ import CreateMatchingForm from '@/components/matching/CreateMatchingForm.vue';
 import UpdateMentorMenteeForm from '@/components/profile/UpdateMentorMenteeForm.vue';
 import CreateCommentForm from '@/components/board/CreateCommentForm.vue';
 import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
-import Layout from '@/components/common/Layout.vue';
 import MatchingPopup from '@/components/matching/MatchingPopup.vue'
 import CreateMatchingCommentForm from '@/components/matching/CreateMatchingCommentForm.vue'
 import Pagination from '@/components/common/Pagination.vue';
@@ -20,6 +19,7 @@ import CreatePostForm from '@/components/board/CreatePostForm.vue';
 import UpdateProfileForm from '@/components/profile/UpdateProfileForm.vue';
 import MentorMenteeContext from '@/components/profile/MentorMenteeContext.vue';
 import CountLabel from '@/components/profile/CountLabel.vue';
+
 import CreateMatchingCommentPage from '@/pages/matching/CreateMatchingCommentPage.vue';
 import OTPVerify from '@/components/sign/OTPVerify.vue';
 
@@ -33,24 +33,15 @@ import UpdateProfilePage from '@/pages/profile/UpdateProfilePage.vue'
 import CreateFreePostPage from '@/pages/board/CreateFreePostPage.vue';
 import MatchingPage from '@/pages/matching/MatchingPage.vue';
 import SignUpPage from '@/pages/sign/SignUpPage.vue';
-
-
-
-
+import UserProfilePage from '@/pages/profile/UserProfilePage.vue';
 
 const routes = [
   
-
-  {
-    path: '/',
-    component: Layout,
-  },
-  { path: '/matching-post-card', component: MatchingPostCard },
-  { path: '/matching-comment-card', component: MatchingCommentCard },
-  { path: '/create-matching-form', component: CreateMatchingForm },
-  { path: '/update-mentormentee-form', component: UpdateMentorMenteeForm },
-
-  { path: '/create-commment-from', component: CreateCommentForm },
+  { path: '/postcard', component: MatchingPostCard },
+  { path: '/commentcard', component: MatchingCommentCard },
+  { path: '/matchingform', component: CreateMatchingForm },
+  { path: '/mentormenteeform', component: UpdateMentorMenteeForm },
+  { path: '/commentform', component: CreateCommentForm },
   { path: '/test-popup', component: MatchingPopup },
   { path: '/test-comment', component: CreateMatchingCommentForm },
   { path: '/test-createpost', component: CreatePostForm },
@@ -71,7 +62,7 @@ const routes = [
   { path: '/create-post', component: CreateFreePostPage },
   { path: '/matching', component: MatchingPage },
   { path: '/signup', component: SignUpPage},
-
+  { path: '/profile', component: UserProfilePage },
 
 ]
 

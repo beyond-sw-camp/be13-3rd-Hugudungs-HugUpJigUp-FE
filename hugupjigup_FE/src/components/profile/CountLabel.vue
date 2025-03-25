@@ -1,59 +1,52 @@
 <template>
-    <v-app>
-      <v-container class="d-flex justify-center align-center" style="height: 100vh;">
-        <v-card 
-          @click="navigateToPage" 
-          class="clickable-card"
-          max-width="500px"
-        >
-          <v-card-title class="text-h5 font-weight-bold text-center">
-            {{ cardData.title }}
-          </v-card-title>
-          <v-card-subtitle class="text-h6 text-center">
-            {{ cardData.subtitle }}
-          </v-card-subtitle>
-        </v-card>
-      </v-container>
-    </v-app>
-  </template>
-  
-  <script setup lang="ts">
-  import { ref } from 'vue';
-  import { useRouter } from 'vue-router';
-  
-  interface CardData {
-    title: string;
-    subtitle: string;
-  }
-  
-  const cardData = ref<CardData>({
-    title: '작성한 게시글', 
-    subtitle: '1'
-  });
-  
-  // 라우터 인스턴스 가져오기
-  const router = useRouter();
-  
-  // 페이지 이동 함수
-  const navigateToPage = () => {
-    router.push('/posts'); // 이동할 경로 지정
-  };
-  </script>
-  
-  <style scoped>
-  .v-card-title, .v-card-subtitle {
-    width: 100%;
-    display: block;
-  }
-  
-  .clickable-card {
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .clickable-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  </style>
-  
+  <v-card
+    class="clickable-card"
+    width="150"
+    height="100"
+    color="#1e293b"
+    dark
+    @click="navigateToPage"
+  >
+    <v-card-text class="d-flex flex-column align-center justify-center pa-2">
+      <div class="text-h5 font-weight-bold text-center">{{ title }}</div>
+      <div class="text-subtitle-2 mt-3">{{ subtitle }}</div>
+    </v-card-text>
+  </v-card>
+</template>
+
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+// props 정의
+const props = defineProps({
+  title: {
+    type: String,
+    required: true
+  },
+  subtitle: {
+    type: String,
+    required: true
+  },
+  path: {
+    type: String,
+    required: true
+  },
+});
+
+const router = useRouter();
+
+const navigateToPage = () => {
+  router.push(`/${props.path}`);
+};
+</script>
+
+<style scoped>
+.clickable-card {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.clickable-card:hover {
+  transform: scale(1.05);
+}
+</style>
