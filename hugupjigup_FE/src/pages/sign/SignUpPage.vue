@@ -34,7 +34,7 @@
         </v-btn>
       </template>
       </v-text-field>
-  
+
         <v-text-field
           v-model="email"
           :rules="emailRules"
@@ -53,7 +53,7 @@
         </v-btn>
       </template>
     </v-text-field>
-  
+
         <v-text-field
           v-model="password"
           :rules="passwordRules"
@@ -63,12 +63,12 @@
             @click:append="togglePassword"
           required
         ></v-text-field>
-  
+
         <div class="password-strength">
           password strength:
           <span :class="strengthColor">{{ passwordStrength }}</span>
         </div>
-  
+
         <v-checkbox
           v-model="checkbox"
           :rules="[(v: boolean) => !!v || '진행하려면 약관에 동의해야 합니다.']"
@@ -85,7 +85,7 @@
             >
           </template>
         </v-checkbox>
-  
+
         <div class="d-flex flex-column">
           <v-btn class="mt-4" color="success" block @click="validate">
             CREATE ACCOUNT
@@ -94,16 +94,17 @@
       </v-form>
 
       <!-- OTP 팝업 -->
-      <OTPVerify :email="email" v-model="otpDialogVisible" @otp-success="onOTPSuccess" @otp-fail="onOTPFail" />
+      <OTPVerify :email="email" :password="password" :nickname="nickname" v-model="otpDialogVisible" @otp-success="onOTPSuccess" @otp-fail="onOTPFail" />
     </v-sheet>
 </template>
-  
+
   <script lang="ts" setup>
   import { ref, computed } from 'vue'
   import { useRouter } from 'vue-router'
   import OTPVerify from '@/components/sign/OTPVerify.vue'
   import axios from 'axios'
-  
+  import {isDuplicatedEmail, isDuplicatedNickname, otpRequest} from "@/usecases/user_usecase";
+
   const router = useRouter()
   const formRef = ref()
   const otpDialogVisible = ref(false)
@@ -112,19 +113,19 @@
 const nicknameErrorMsg = ref('')
 const emailError = ref(false)
 const emailErrorMsg = ref('')
-  
+
       const nickname = ref<string>('')
       const nicknameRules = ref([
         (v: string) => !!v || '닉네임을 작성해 주세요',
         (v: string) => (v && v.length <= 10) || '닉네임은 최대 10자 입니다.',
       ])
-  
+
       const email = ref<string>('')
       const emailRules = ref([
         (v: string) => !!v || '이메일을 입력해 주세요.',
         (v: string) => (/.+@.+\..+/.test(v)) || '이메일 형식이 올바르지 않습니다.',
       ])
-  
+
       const password = ref<string>('')
       const passwordRules = ref([
         (v: string) => !!v || '비밀번호를 입력해 주세요.',
@@ -135,14 +136,14 @@ const emailErrorMsg = ref('')
 function togglePassword() {
   hidePassword.value = !hidePassword.value
 }
-  
+
     const passwordStrength = computed(() => {
       if (!password.value) return ''
       if (password.value.length >= 8) return 'strong'
       if (password.value.length >= 4) return 'medium'
       return 'weak'
     })
-  
+
     const strengthColor = computed(() => {
       switch (passwordStrength.value) {
         case 'strong': return 'text-strong'
@@ -151,21 +152,30 @@ function togglePassword() {
         default:       return ''
       }
     })
-  
+
       const checkbox = ref<boolean>(false)
 
-  
+
   // async 추가
   async function validate() {
-  const result = await formRef.value?.validate()
+    console.log('tlqkfsusdi');
+  //   const result = await formRef.value?.validate()
+  //
+  // // // Vuetify 3: validate()는 { valid: true } 형태로 반환될 수 있음
+  // // const isValid = typeof result === 'object' ? result.valid : result
+  //
+  //   if (!result.valid) return
 
-  // // Vuetify 3: validate()는 { valid: true } 형태로 반환될 수 있음
-  // const isValid = typeof result === 'object' ? result.valid : result
+    const response: boolean = await otpRequest(email.value);
 
-  if (!result.valid) return
+    console.log(response);
 
-  otpDialogVisible.value = true
+    if(!response) {
+      throw Error('OTP 요청에 실패했습니다.');
     }
+
+    otpDialogVisible.value = true
+  }
 
     // OTP 인증 성공 시 실행되는 함수
 function onOTPSuccess() {
@@ -182,8 +192,9 @@ function onOTPFail() {
 // 닉네임 중복 확인
 async function checkNickname() {
   try {
-    const response = await axios.get(`/api/v1/auth/duplicate/email/{email}`, { params: { nickname: nickname.value } })
-    if (response.data.available) {
+    // const response = await axios.get(`/api/v1/auth/duplicate/email/{email}`, { params: { nickname: nickname.value } })
+    const result: boolean = await isDuplicatedNickname(nickname.value);
+    if (!result) {
       nicknameError.value = false
       nicknameErrorMsg.value = "사용 가능한 닉네임입니다."
     } else {
@@ -200,8 +211,9 @@ async function checkNickname() {
 // 이메일 중복 확인
 async function checkEmail() {
   try {
-    const response = await axios.get(`/api/v1/auth/duplicate/nickname/{nickname}`, { params: { email: email.value } })
-    if (response.data.available) {
+    // const response = await axios.get(`/api/v1/auth/duplicate/nickname/{nickname}`, { params: { email: email.value } })
+    const result: boolean = await isDuplicatedEmail(email.value);
+    if (!result) {
       emailError.value = false
       emailErrorMsg.value = "사용 가능한 이메일입니다."
     } else {
@@ -215,7 +227,7 @@ async function checkEmail() {
   }
 }
   </script>
-  
+
   <style scoped>
 /* ========= 소셜 로그인 버튼 영역 ========= */
 .oauth-section {
