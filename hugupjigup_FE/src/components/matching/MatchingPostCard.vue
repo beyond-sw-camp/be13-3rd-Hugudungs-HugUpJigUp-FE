@@ -1,27 +1,32 @@
 <template>
-  <v-card class="custom-card cardStyle">
+  <v-card class="custom-card">
+    <!-- 프로필 이미지 -->
     <div class="image-container">
-      <v-img :src="card.image" height="150" cover class="rounded-circle image-center" />
+      <v-img :src="card.image" height="150" cover class="rounded-circle" />
     </div>
 
-    <v-card-title class="text-center font-weight-bold card-title-text title-style">
-      {{ card.title }}
+    <!-- 이름 -->
+    <v-card-title class="text-center name-text">
+      {{ card.name }}
     </v-card-title>
 
-    <v-card-subtitle class="text-center card-subtitle-text subtitle-style">
-      {{ card.subtitle }}
+    <!-- 타이틀 -->
+    <v-card-subtitle class="text-center title-text">
+      {{ card.title }}
     </v-card-subtitle>
 
-    <v-card-text class="card-description card-text">
-      <div>• 경력</div>
-      <div class="tab-space">{{ card.career }}</div>
+    <v-card-text class="card-text-section">
+      <div class="section-label">• 경력</div>
+      <div class="section-content">{{ card.job || '-' }}</div>
+
       <div class="space-between-sections"></div>
-      <div>• 자기소개</div>
-      <div class="tab-space">{{ card.introduction }}</div>
+
+      <div class="section-label">• 자기소개</div>
+      <div class="section-content">{{ card.introduction || '-' }}</div>
     </v-card-text>
 
+    <!-- MatchingPopup activator로 감싼 버튼 -->
     <v-card-actions class="justify-center">
-      <!-- 팝업 연결 -->
       <MatchingPopup :card="card" />
     </v-card-actions>
   </v-card>
@@ -30,64 +35,88 @@
 <script lang="ts" setup>
 import MatchingPopup from '@/components/matching/MatchingPopup.vue'
 
-defineProps<{ card: {
-  image: string;
-  title: string;
-  subtitle: string;
-  career: string;
-  introduction: string;
-} }>()
+defineProps<{
+  card: {
+    image: string;
+    name: string;
+    title: string;
+    career?: string;
+    job?: string;
+    tags?: string[];
+    company: string;
+    info?: string;
+    introduction?: string;
+  };
+}>()
 </script>
 
 <style scoped>
-/* 기존 스타일 그대로 유지 */
 .custom-card {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   border: 1px solid #ddd;
-  width: 360px;
-  height: 580px;
+  border-radius: 12px;
+  width: 320px;
+  min-height: 520px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0 auto;
   background-color: white;
 }
+
 .image-container {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   margin: 10px auto;
 }
+
 .rounded-circle {
   border-radius: 50%;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.card-title-text,
-.card-subtitle-text,
-.card-text {
-  color: #666666;
+
+.name-text {
+  font-weight: bold;
+  font-size: 1.4em;
+  color: #505050;
+  margin-bottom: 4px;
 }
-.title-style {
-  font-size: 2em;
+
+.title-text {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #000;
+  margin-bottom: 12px;
 }
-.subtitle-style {
-  font-size: 1.5em;
-  font-weight: 800;
-  color: #333333;
-}
-.card-description {
+
+.card-text-section {
   font-size: 0.9em;
-  margin-bottom: 10px;
+  color: #666;
 }
-.tab-space {
-  margin-left: 20px;
+
+.section-label {
+  font-weight: normal;
+  color: #666;
+  margin-bottom: 16px;
 }
+
+.section-content {
+  color: #999;
+  margin-left: 16px;
+  white-space: pre-line;
+  margin-bottom: 16px;
+}
+
 .space-between-sections {
-  margin-top: 10px;
+  margin-top: 12px;
 }
-.details-button {
-  background-color: black;
-  color: white;
+
+/* MatchingPopup 안의 버튼 스타일 오버라이드 */
+:deep(.v-btn) {
+  background-color: black !important;
+  color: white !important;
+  border-radius: 8px;
+  font-weight: 500;
 }
 </style>
