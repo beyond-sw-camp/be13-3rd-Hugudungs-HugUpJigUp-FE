@@ -19,6 +19,20 @@ import CreatePostForm from '@/components/board/CreatePostForm.vue';
 import UpdateProfileForm from '@/components/profile/UpdateProfileForm.vue';
 import MentorMenteeContext from '@/components/profile/MentorMenteeContext.vue';
 import CountLabel from '@/components/profile/CountLabel.vue';
+
+import CreateMatchingCommentPage from '@/pages/matching/CreateMatchingCommentPage.vue';
+import OTPVerify from '@/components/sign/OTPVerify.vue';
+
+
+
+// pages vue
+import DecisionMatchingPage from '@/pages/matching/DecisionMatchingPage.vue';
+import UpdateMentorMenteeProfilePage from '@/pages/profile/UpdateMentorMenteeProfilePage.vue';
+import ApplyMatchingPage from '@/pages/matching/ApplyMatchingPage.vue';
+import UpdateProfilePage from '@/pages/profile/UpdateProfilePage.vue'
+import CreateFreePostPage from '@/pages/board/CreateFreePostPage.vue';
+import MatchingPage from '@/pages/matching/MatchingPage.vue';
+import SignUpPage from '@/pages/sign/SignUpPage.vue';
 import UserProfilePage from '@/pages/profile/UserProfilePage.vue';
 import MatchingCommentPage from '@/pages/matching/MatchingCommentPage.vue';
 
@@ -36,6 +50,19 @@ const routes = [
   { path: '/pagination', component: Pagination },
   { path: '/context', component: MentorMenteeContext },
   { path: '/count', component: CountLabel },
+  { path: '/OTP', component: OTPVerify },
+
+  { path: '/create-matching-comment', component: CreateMatchingCommentPage },
+  { path: '/apply-matching-page', component: ApplyMatchingPage },
+  { path: '/decision', component: DecisionMatchingPage },
+
+
+  //pages vue
+  { path: '/update-mentormentee-profile', component: UpdateMentorMenteeProfilePage },
+  { path: '/update-profile', component: UpdateProfilePage },
+  { path: '/create-post', component: CreateFreePostPage },
+  { path: '/matching', component: MatchingPage },
+  { path: '/signup', component: SignUpPage},
   { path: '/profile', component: UserProfilePage },
   { path: '/matchingcomment', component: MatchingCommentPage },
 ]

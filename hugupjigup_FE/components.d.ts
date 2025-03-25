@@ -21,6 +21,7 @@ declare module 'vue' {
     MatchingPopup: typeof import('./src/components/matching/MatchingPopup.vue')['default']
     MatchingPostCard: typeof import('./src/components/matching/MatchingPostCard.vue')['default']
     MentorMenteeContext: typeof import('./src/components/profile/MentorMenteeContext.vue')['default']
+    OTPVerify: typeof import('./src/components/sign/OTPVerify.vue')['default']
     PageBreadcrumb: typeof import('./src/components/common/PageBreadcrumb.vue')['default']
     Pagination: typeof import('./src/components/common/Pagination.vue')['default']
     PostsList: typeof import('./src/components/board/PostsList.vue')['default']
