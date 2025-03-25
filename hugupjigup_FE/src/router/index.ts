@@ -35,6 +35,7 @@ import CreateFreePostPage from '@/pages/board/CreateFreePostPage.vue'
 import MatchingPage from '@/pages/matching/MatchingPage.vue'
 import SignUpPage from '@/pages/sign/SignUpPage.vue'
 import UserProfilePage from '@/pages/profile/UserProfilePage.vue'
+import SignInPage from '@/pages/sign/SignInPage.vue'
 
 // Error Pages
 import NotFoundPage from '@/pages/error/NotFoundPage.vue'
@@ -71,6 +72,7 @@ const routes = [
   { path: '/matching', component: MatchingPage },
   { path: '/signup', component: SignUpPage },
   { path: '/profile', component: UserProfilePage },
+  { path: '/login', component: SignInPage },
 
   // ✅ 에러 테스트용 라우트 (개발 중 테스트용)
   {
