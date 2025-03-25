@@ -15,6 +15,7 @@ import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
 import MatchingPopup from '@/components/matching/MatchingPopup.vue'
 import CreateMatchingCommentForm from '@/components/matching/CreateMatchingCommentForm.vue'
 import Pagination from '@/components/common/Pagination.vue';
+import MatchingPagination from '@/components/common/MatchingPagination.vue';
 import CreatePostForm from '@/components/board/CreatePostForm.vue';
 import UpdateProfileForm from '@/components/profile/UpdateProfileForm.vue';
 import MentorMenteeContext from '@/components/profile/MentorMenteeContext.vue';
@@ -22,8 +23,6 @@ import CountLabel from '@/components/profile/CountLabel.vue';
 
 import CreateMatchingCommentPage from '@/pages/matching/CreateMatchingCommentPage.vue';
 import OTPVerify from '@/components/sign/OTPVerify.vue';
-
-
 
 // pages vue
 import DecisionMatchingPage from '@/pages/matching/DecisionMatchingPage.vue';
@@ -48,22 +47,22 @@ const routes = [
   { path: '/test-createpost', component: CreatePostForm },
   { path: '/test-updateprofile', component: UpdateProfileForm },
   { path: '/pagination', component: Pagination },
+  { path: '/matchingpagination', component: MatchingPagination },
   { path: '/context', component: MentorMenteeContext },
   { path: '/count', component: CountLabel },
   { path: '/OTP', component: OTPVerify },
 
-  { path: '/create-matching-comment', component: CreateMatchingCommentPage },
-  { path: '/apply-matching-page', component: ApplyMatchingPage },
-  { path: '/decision', component: DecisionMatchingPage },
-
-
+  
   //pages vue
   { path: '/update-mentormentee-profile', component: UpdateMentorMenteeProfilePage },
   { path: '/update-profile', component: UpdateProfilePage },
   { path: '/create-post', component: CreateFreePostPage },
   { path: '/matching', component: MatchingPage },
   { path: '/signup', component: SignUpPage},
+  { path: '/create-matching-comment', component: CreateMatchingCommentPage },
   { path: '/profile', component: UserProfilePage },
+  { path: '/apply-matching-page', component: ApplyMatchingPage },
+  { path: '/decision', component: DecisionMatchingPage },
   { path: '/matchingcomment', component: MatchingCommentPage },
 ]
 

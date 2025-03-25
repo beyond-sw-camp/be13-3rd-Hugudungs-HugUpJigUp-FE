@@ -28,7 +28,7 @@ const router = useRouter();
 const props = defineProps<{
   title: string;
   text: string;
-  path: string
+  path: string;
 }>();
 
 const handleButtonClick = () => {

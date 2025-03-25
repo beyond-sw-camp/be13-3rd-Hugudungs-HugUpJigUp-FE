@@ -62,5 +62,6 @@ function onClick() {
 }
 .search-field {
   flex-grow: 1;
+  min-width: 200px;
 }
 </style>

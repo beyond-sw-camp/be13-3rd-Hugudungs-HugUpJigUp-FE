@@ -1,5 +1,8 @@
 <template>
-  <CustomHeader :logoUrl="logoUrl" :tabs="tabs" />
+  <CustomHeader 
+    :logo-url="logoUrl" 
+    :tabs="tabs" 
+  />
   <main>
     <slot />
   </main>
