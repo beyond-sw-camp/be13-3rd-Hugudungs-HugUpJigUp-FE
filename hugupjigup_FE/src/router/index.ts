@@ -21,6 +21,7 @@ import UpdateProfileForm from '@/components/profile/UpdateProfileForm.vue';
 import MentorMenteeContext from '@/components/profile/MentorMenteeContext.vue';
 import CountLabel from '@/components/profile/CountLabel.vue';
 import CreateMatchingCommentPage from '@/pages/matching/CreateMatchingCommentPage.vue';
+import OTPVerify from '@/components/sign/OTPVerify.vue';
 
 
 
@@ -31,6 +32,7 @@ import ApplyMatchingPage from '@/pages/matching/ApplyMatchingPage.vue';
 import UpdateProfilePage from '@/pages/profile/UpdateProfilePage.vue'
 import CreateFreePostPage from '@/pages/board/CreateFreePostPage.vue';
 import MatchingPage from '@/pages/matching/MatchingPage.vue';
+import SignUpPage from '@/pages/sign/SignUpPage.vue';
 
 
 
@@ -56,6 +58,8 @@ const routes = [
   { path: '/pagination', component: Pagination },
   { path: '/context', component: MentorMenteeContext },
   { path: '/count', component: CountLabel },
+  { path: '/OTP', component: OTPVerify },
+
   { path: '/create-matching-comment', component: CreateMatchingCommentPage },
   { path: '/apply-matching-page', component: ApplyMatchingPage },
   { path: '/decision', component: DecisionMatchingPage },
@@ -66,6 +70,7 @@ const routes = [
   { path: '/update-profile', component: UpdateProfilePage },
   { path: '/create-post', component: CreateFreePostPage },
   { path: '/matching', component: MatchingPage },
+  { path: '/signup', component: SignUpPage},
 
 
 ]

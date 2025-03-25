@@ -1,7 +1,7 @@
 <template>
     <v-container fluid class="px-6">
       <!-- 상단 로고 영역 -->
-      <LogoTap/>
+      <!-- <LogoTap/> -->
     
       <!-- 상단 바 -->
       <v-row align="center" class="mt-6 mb-4">
@@ -28,7 +28,7 @@
   
   <script setup lang="ts">
   import { ref } from 'vue'
-  import LogoTap from '@/components/common/LogoTap.vue';
+  // import LogoTap from '@/components/common/LogoTap.vue';
   import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
   import SearchActionBar from '@/components/common/SearchActionBar.vue'
   import MatchingPagination from '@/components/common/MatchingPagination.vue'
