@@ -24,6 +24,8 @@ import CountLabel from '@/components/profile/CountLabel.vue'
 import CreateMatchingCommentPage from '@/pages/matching/CreateMatchingCommentPage.vue'
 import OTPVerify from '@/components/sign/OTPVerify.vue'
 
+import InsertTextForm from '@/components/sign/InsertTextForm.vue'
+
 // Pages
 import DecisionMatchingPage from '@/pages/matching/DecisionMatchingPage.vue'
 import UpdateMentorMenteeProfilePage from '@/pages/profile/UpdateMentorMenteeProfilePage.vue'
@@ -55,6 +57,7 @@ const routes = [
   { path: '/context', component: MentorMenteeContext },
   { path: '/count', component: CountLabel },
   { path: '/OTP', component: OTPVerify },
+  { path: '/insert', component: InsertTextForm },
 
   // Matching 관련
   { path: '/create-matching-comment', component: CreateMatchingCommentPage },
