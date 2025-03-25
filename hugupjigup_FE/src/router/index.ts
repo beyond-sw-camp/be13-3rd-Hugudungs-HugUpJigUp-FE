@@ -8,13 +8,11 @@
 import { createRouter, createWebHistory } from 'vue-router/auto'
 
 import Layout from '@/components/common/Layout.vue';
-// import MatchingPostCard from '@/components/matching/MatchingPostCard.vue';
-// import CreateMatchingForm from '@/components/matching/CreateMatchingForm.vue';
-// import UpdateMentorMenteeForm from '@/components/profile/UpdateMentorMenteeForm.vue';
+import MatchingPostCard from '@/components/matching/MatchingPostCard.vue';
+import CreateMatchingForm from '@/components/matching/CreateMatchingForm.vue';
+import UpdateMentorMenteeForm from '@/components/profile/UpdateMentorMenteeForm.vue';
 import CreateCommentForm from '@/components/board/CreateCommentForm.vue';
-// import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
-// import LogoTap from '@/components/common/LogoTap.vue';
-// import PageTop from '@/components/common/PageTop.vue';
+import MatchingCommentCard from '@/components/matching/MatchingCommentCard.vue'
 import MatchingPopup from '@/components/matching/MatchingPopup.vue'
 import CreateMatchingCommentForm from '@/components/matching/CreateMatchingCommentForm.vue'
 import Pagination from '@/components/common/Pagination.vue';
@@ -25,22 +23,17 @@ import CountLabel from '@/components/profile/CountLabel.vue';
 import UserProfilePage from '@/pages/profile/UserProfilePage.vue';
 
 const routes = [
-  {
-    path: '/',
-    component: Layout,
-  },
-  // { path: '/', component: LogoTap },
-  // { path: '/', component: PageTop },
-  // { path: '/', component: MatchingPostCard },
-  // { path: '/', component: MatchingCommentCard },
-  // { path: '/', component: CreateMatchingForm },
-  // { path: '/', component: UpdateMentorMenteeForm },
-  { path: '/comment', component: CreateCommentForm },
+  
+  { path: '/postcard', component: MatchingPostCard },
+  { path: '/commentcard', component: MatchingCommentCard },
+  { path: '/matchingform', component: CreateMatchingForm },
+  { path: '/mentormenteeform', component: UpdateMentorMenteeForm },
+  { path: '/commentform', component: CreateCommentForm },
   { path: '/test-popup', component: MatchingPopup },
   { path: '/test-comment', component: CreateMatchingCommentForm },
   { path: '/test-createpost', component: CreatePostForm },
   { path: '/test-updateprofile', component: UpdateProfileForm },
-  { path: '/', component: Pagination },
+  { path: '/pagination', component: Pagination },
   { path: '/context', component: MentorMenteeContext },
   { path: '/count', component: CountLabel },
   { path: '/profile', component: UserProfilePage },
@@ -50,7 +43,7 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-});
+})
 
 // Workaround for https://github.com/vitejs/vite/issues/11804
 router.onError((err, to) => {

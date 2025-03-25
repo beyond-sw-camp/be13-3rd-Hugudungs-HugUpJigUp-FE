@@ -1,11 +1,11 @@
 <template>
   <v-card
-    @click="navigateToPage"
     class="clickable-card"
     width="150"
     height="100"
     color="#1e293b"
     dark
+    @click="navigateToPage"
   >
     <v-card-text class="d-flex flex-column align-center justify-center pa-2">
       <div class="text-h5 font-weight-bold text-center">{{ title }}</div>
@@ -26,13 +26,17 @@ const props = defineProps({
   subtitle: {
     type: String,
     required: true
-  }
+  },
+  path: {
+    type: String,
+    required: true
+  },
 });
 
 const router = useRouter();
 
 const navigateToPage = () => {
-  router.push('/posts');
+  router.push(`/${props.path}`);
 };
 </script>
 

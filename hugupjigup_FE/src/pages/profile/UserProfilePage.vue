@@ -58,7 +58,8 @@
                 >
                   <CountLabel 
                     :title="item.title" 
-                    :subtitle="item.subtitle" 
+                    :subtitle="item.subtitle"
+                    :path="item.path"
                   />
                 </v-col>
               </v-row>
@@ -72,6 +73,7 @@
                     color="error" 
                     rounded="pill" 
                     prepend-icon="mdi-logout"
+                    @click="doLogout"
                   >
                     Log out
                   </v-btn>
@@ -81,6 +83,7 @@
                     color="primary"
                     rounded="pill"
                     prepend-icon="mdi-pencil"
+                    @click="navigateToUpadateProfile"
                   > 
                     Edit
                   </v-btn>
@@ -100,6 +103,7 @@
               <MentorMenteeContext 
                 :title="item.title" 
                 :text="item.text"
+                :path="item.path"
               />
             </v-col>
           </v-row>
@@ -113,33 +117,40 @@
 import { ref } from "vue";
 import CountLabel from "@/components/profile/CountLabel.vue";
 import MentorMenteeContext from "@/components/profile/MentorMenteeContext.vue";
+import router from "@/router";
 
 interface CardData {
   title: string;
   subtitle: string;
+  path: string;
 }
 
 interface ContextDto {
   title: string;
   text: string;
+  path: string;
 }
 
 const postsCount = ref<CardData[]>([
   {
     title: "게시글",
     subtitle: "31",
+    path: "myposts"
   },
   {
     title: "댓글",
     subtitle: "14",
+    path: "mycomments"
   },
   {
     title: "멘토링",
     subtitle: "21",
+    path: "mymentorings"
   },
   {
     title: "후기",
     subtitle: "18",
+    path: "mymentees"
   },
 ]);
 
@@ -171,6 +182,7 @@ const mentorMenteeInfo = ref<ContextDto[]>([
 사실 전하고 싶은 나의 말은 그게 아냐
 아- 사무치게 빛나는
 너를 바라보며 나를 탓하고 마네`,
+    path: 'updatementor',
   },
   {
     title: "멘티",
@@ -189,8 +201,22 @@ const mentorMenteeInfo = ref<ContextDto[]>([
 오직 너를 위한 사랑을 놓치진 마 더 이상은
 이젠 알겠어 그 어떤 기억들도 그 모든 순간들도
 오 영원한 건 없어 언젠가 스며들어 내게 남아`,
+    path: 'updatementee',
   },
 ]);
+
+const doLogout = () => {
+  const confirmLogout = window.confirm("정말로 로그아웃 하시겠습니까?");
+  
+  if (confirmLogout) {
+    router.push(`/logout`);
+  }
+};
+
+const navigateToUpadateProfile = () => {
+  router.push('/updateprofile')
+}
+
 </script>
 
 <style scoped>
