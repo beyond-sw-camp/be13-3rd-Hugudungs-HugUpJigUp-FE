@@ -9,7 +9,7 @@
           Please enter the one time password to verify your account
         </h3>
   
-        <div>A code has been sent to {{ maskedPhone }}</div>
+        <div>A code has been sent to {{ maskedEmail }}</div>
   
         <v-otp-input
           v-model="otp"
@@ -38,12 +38,14 @@
   import { ref, computed } from 'vue'
   
   const props = defineProps<{
-    phone: string
+    email: string
     modelValue: boolean
   }>()
   
   const emit = defineEmits<{
-    (e: 'update:modelValue', value: boolean): void
+    (e: 'update:modelValue', value: boolean): void;
+    (e: 'otp-success'): void;
+    (e: 'otp-fail'): void
   }>()
   
   const dialogVisible = computed({
@@ -54,17 +56,32 @@
   const otp = ref('')
   const validating = ref(false)
   
-  const maskedPhone = computed(() => {
-    return '***-****-' + props.phone.slice(-4)
+  const maskedEmail = computed(() => {
+    return '****@****' + props.email.slice(-4)
   })
-  
-  function onClick() {
-    validating.value = true
-  
+
+  // OTP 검증 로직 (가상의 검증 로직 추가 가능)
+async function verifyOTP() {
+  return new Promise((resolve) => {
     setTimeout(() => {
+      resolve(otp.value === '123456') // 예제: '123456' 입력 시 성공
+    }, 2000)
+  })
+}
+  
+  async function onClick() {
+    validating.value = true
+
+    const isValid = await verifyOTP()
+  
+    
       validating.value = false
       dialogVisible.value = false
-    }, 2000)
+      if (isValid) {
+    emit('otp-success') // OTP 성공 이벤트 발생
+  } else {
+    emit('otp-fail') // OTP 실패 이벤트 발생
+  }
   }
   </script>
   
