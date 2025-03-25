@@ -7,7 +7,6 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router/auto'
 
-import Layout from '@/components/common/Layout.vue';
 import MatchingPostCard from '@/components/matching/MatchingPostCard.vue';
 import CreateMatchingForm from '@/components/matching/CreateMatchingForm.vue';
 import UpdateMentorMenteeForm from '@/components/profile/UpdateMentorMenteeForm.vue';
@@ -21,6 +20,7 @@ import UpdateProfileForm from '@/components/profile/UpdateProfileForm.vue';
 import MentorMenteeContext from '@/components/profile/MentorMenteeContext.vue';
 import CountLabel from '@/components/profile/CountLabel.vue';
 import UserProfilePage from '@/pages/profile/UserProfilePage.vue';
+import MatchingCommentPage from '@/pages/matching/MatchingCommentPage.vue';
 
 const routes = [
   
@@ -37,7 +37,7 @@ const routes = [
   { path: '/context', component: MentorMenteeContext },
   { path: '/count', component: CountLabel },
   { path: '/profile', component: UserProfilePage },
-
+  { path: '/matchingcomment', component: MatchingCommentPage },
 ]
 
 const router = createRouter({
