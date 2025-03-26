@@ -32,16 +32,6 @@
             class="rounded-input bold-placeholder"
           ></v-text-field>
 
-<!--          <v-text-field-->
-<!--            v-model="password"-->
-<!--            placeholder="Password"-->
-<!--            type="password"-->
-<!--            variant="outlined"-->
-<!--            hide-details-->
-<!--            density="comfortable"-->
-<!--            class="rounded-input bold-placeholder"-->
-<!--          ></v-text-field>-->
-
         </v-form>
 
         <!-- 버튼: 카드 내부에 포함 -->
@@ -57,7 +47,6 @@
   import { ref } from 'vue'
   import router from "@/router";
   import {onMounted} from "vue";
-  import {getJwtPayload} from "@/utils/JwtUtils";
   import {userPinia} from "@/states/user_pinia";
   import {updateUserInfo} from "@/usecases/user_profile_usecase";
 
@@ -88,6 +77,7 @@
           password: password.value
         });
       } catch (e) {
+        console.error(e);
         alert('프로필 수정에 실패했습니다.');
         return;
       }
@@ -106,22 +96,21 @@
 
   <style scoped>
   .form-wrapper {
-    background-color: #0d1540;
-    min-height: 100vh;
+    padding-top: 60px; /* 상단 네비게이션 바 고려 */
+    padding-bottom: 40px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 24px;
   }
 
   .form-card {
     width: 360px;
-    border-radius: 16px;
+    border-radius: 20px; /* 기존보다 더 부드럽게 */
     padding: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* 그림자 강조 */
   }
 
   .title {
