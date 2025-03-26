@@ -1,4 +1,5 @@
 export type UserInfo = {
+  userId: number,
   nickname: string,
   email: string,
   postCount: number,

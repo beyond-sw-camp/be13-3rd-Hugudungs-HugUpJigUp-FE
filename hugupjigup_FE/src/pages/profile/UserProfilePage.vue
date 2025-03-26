@@ -114,11 +114,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import {onMounted, ref} from "vue";
 import CountLabel from "@/components/profile/CountLabel.vue";
 import MentorMenteeContext from "@/components/profile/MentorMenteeContext.vue";
 import router from "@/router";
 import {logout} from "@/usecases/user_usecase";
+import { userPinia } from "@/states/user_pinia";
+const userState = userPinia();
+
+onMounted(async () => {
+  await userState.initUser();
+});
 
 interface CardData {
   title: string;
@@ -221,7 +227,7 @@ const doLogout = async () => {
 };
 
 const navigateToUpadateProfile = () => {
-  router.push('/updateprofile')
+  router.push('/update-profile')
 }
 
 </script>

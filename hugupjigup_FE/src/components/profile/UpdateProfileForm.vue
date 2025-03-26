@@ -14,6 +14,16 @@
 
         <v-form class="form-fields">
           <v-text-field
+            v-model="email"
+            placeholder="Email"
+            variant="outlined"
+            hide-details
+            density="comfortable"
+            class="rounded-input bold-placeholder"
+            disabled
+          ></v-text-field>
+
+          <v-text-field
             v-model="name"
             placeholder="Name"
             variant="outlined"
@@ -22,24 +32,15 @@
             class="rounded-input bold-placeholder"
           ></v-text-field>
 
-          <v-text-field
-            v-model="email"
-            placeholder="Email"
-            variant="outlined"
-            hide-details
-            density="comfortable"
-            class="rounded-input bold-placeholder"
-          ></v-text-field>
-
-          <v-text-field
-            v-model="password"
-            placeholder="Password"
-            type="password"
-            variant="outlined"
-            hide-details
-            density="comfortable"
-            class="rounded-input bold-placeholder"
-          ></v-text-field>
+<!--          <v-text-field-->
+<!--            v-model="password"-->
+<!--            placeholder="Password"-->
+<!--            type="password"-->
+<!--            variant="outlined"-->
+<!--            hide-details-->
+<!--            density="comfortable"-->
+<!--            class="rounded-input bold-placeholder"-->
+<!--          ></v-text-field>-->
 
         </v-form>
 
@@ -55,17 +56,50 @@
   <script lang="ts" setup>
   import { ref } from 'vue'
   import router from "@/router";
+  import {onMounted} from "vue";
+  import {getJwtPayload} from "@/utils/JwtUtils";
+  import {userPinia} from "@/states/user_pinia";
+  import {updateUserInfo} from "@/usecases/user_profile_usecase";
 
   const name = ref('')
   const email = ref('')
   const password = ref('')
 
+  const userState = userPinia();
+
+  onMounted(async () => {
+    console.log(userState.user);
+
+    name.value = userState.user?.nickname ?? 'Nick-name';
+    email.value = userState.user?.email ?? 'Email';
+  });
+
   const onCancel = () => {
     router.back();
   }
 
-  const onComplete = () => {
-    console.log(name.value, email.value, password.value);
+  const onComplete = async () => {
+    const user = userState.user;
+    if (user) {
+      try {
+        await updateUserInfo(user.userId, {
+          name: name.value,
+          email: email.value,
+          password: password.value
+        });
+      } catch (e) {
+        alert('프로필 수정에 실패했습니다.');
+        return;
+      }
+
+      userState.updateUser({ ...user,
+        nickname: name.value,
+        email: email.value }
+      );
+      alert('프로필 수정 성공');
+    } else {
+      alert('사용자 정보를 찾을 수 없습니다.');
+    }
   }
 
   </script>
