@@ -7,7 +7,6 @@
         background-color: #1e293b;
         display: flex;
         align-items: center;
-        height: fit-content;
         justify-content: center;
       "
     >
@@ -15,7 +14,10 @@
         elevation="6"
         rounded="lg"
         class="mx-auto"
-        max-width="1000px"
+        
+        max-width="1200px"
+        color="white"
+
         width="100%"
         style="height: fit-content;"
       >
@@ -36,10 +38,10 @@
               </v-avatar>
               <div class="mt-2">
                 <div class="text-h6 font-weight-bold">
-                  연정
+                  {{ userState.user?.nickname ?? 'Nick Name' }}
                 </div>
                 <div class="text-caption text-grey-lighten-1">
-                  싱어송라이터, iOS 개발자
+                  {{ `${userState.user?.currentJob ?? '현재 직무를 입력해 주세요.'} / ${userState.user?.desiredJob ?? '희망 직무를 입력해 주세요.'}` }}
                 </div>
               </div>
             </v-col>
@@ -114,11 +116,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import {onMounted, ref} from "vue";
 import CountLabel from "@/components/profile/CountLabel.vue";
 import MentorMenteeContext from "@/components/profile/MentorMenteeContext.vue";
 import router from "@/router";
 import {logout} from "@/usecases/user_usecase";
+import { userPinia } from "@/states/user_pinia";
+
+const userState = userPinia();
+
+onMounted(async () => {
+  await userState.initUser();
+});
 
 interface CardData {
   title: string;
@@ -132,25 +141,30 @@ interface ContextDto {
   path: string;
 }
 
+// 데이터 바인딩을 위한 변수 선언
+const name = ref('연정');
+const description1 = ref('싱어송라이터');
+const description2 = ref('iOS 개발자');
+
 const postsCount = ref<CardData[]>([
   {
     title: "게시글",
-    subtitle: "31",
+    subtitle: (userState.user?.postCount  ?? 0).toString(),
     path: "myposts"
   },
   {
     title: "댓글",
-    subtitle: "14",
+    subtitle: (userState.user?.commentCount  ?? 0).toString(),
     path: "mycomments"
   },
   {
     title: "멘토링",
-    subtitle: "21",
+    subtitle: (userState.user?.matchingCount  ?? 0).toString(),
     path: "mymentorings"
   },
   {
     title: "후기",
-    subtitle: "18",
+    subtitle:(userState.user?.matchingCommentCount  ?? 0).toString(),
     path: "mymentees"
   },
 ]);
@@ -158,57 +172,18 @@ const postsCount = ref<CardData[]>([
 const mentorMenteeInfo = ref<ContextDto[]>([
   {
     title: "멘토",
-    text: `서투른 낙서 같은 나에게 물어봐
-따뜻할 순 없었겠냐고
-사랑을 속삭일 수는 없냐고
-날이 서있는 나의 말들에
-그림자 없이 숨겨진 맘
-날이 저물고 어둠이 깔릴 때
-비로소 드러나는 빨간 진심들
-아- 사실 전하고 싶은
-나의 말은 그게 아냐
-아- 사무치게 빛나는
-너를 바라보며 나를 탓하고 마네
-사랑은 모르고 미움만 알듯이
-괜히 투정 부린 날 보면서
-사랑을 외치고 미움은 던지고
-헝클어진 맘을 내려놓으라 하네
-아- 사실 전하고 싶은
-나의 말은 그게 아냐
-아- 사무치게 빛나는
-너를 바라보며 나를 탓하고 마네
-삶의 이유인 너를 잊은 채
-흐려진 생각들로 너에게
-남겨둔 건 쓰디쓴 말뿐이야
-사실 전하고 싶은 나의 말은 그게 아냐
-아- 사무치게 빛나는
-너를 바라보며 나를 탓하고 마네`,
+    text: userState.user?.mentorProfile.introduction ?? '멘토 자기소개를 입력해 주세요.',
     path: 'updatementor',
   },
   {
     title: "멘티",
-    text: `그땐 생각지도 못했던 내가 여기 있지
-이제 와 돌이켜보면 코웃음만 지어지는
-그때 아무리 진하게 칠해진 슬픔이어도
-흐르는 시간 속에선 모두 흘러 녹아내려
-멈출 수 없는 이 순간들이 모인 물결을 따라가
-이젠 알겠어 그 어떤 기억들도 그 모든 순간들도
-오 영원한 건 없어 언젠가 스며들어 내게 남아
-수많은 순간들 그 속에서 헤엄치는 우리
-수영은 못하기에 더욱 큰 몸짓으로 첨벙거리네
-이젠 알겠어 그 어떤 기억들도 그 모든 순간들도
-오 영원한 건 없어 언젠가 스며들어 내게 남아
-끝없이 흐르는 순간 속에도
-오직 너를 위한 사랑을 놓치진 마 더 이상은
-이젠 알겠어 그 어떤 기억들도 그 모든 순간들도
-오 영원한 건 없어 언젠가 스며들어 내게 남아`,
+    text: userState.user?.menteeProfile.introduction ?? '멘티 자기소개를 입력해 주세요.',
     path: 'updatementee',
   },
 ]);
 
 const doLogout = async () => {
   const confirmLogout = window.confirm("정말로 로그아웃 하시겠습니까?");
-
   if (confirmLogout) {
     const response = await logout();
     if (response) {
@@ -220,8 +195,9 @@ const doLogout = async () => {
   }
 };
 
+
 const navigateToUpadateProfile = () => {
-  router.push('/updateprofile')
+  router.push('/update-profile')
 }
 
 </script>
@@ -244,18 +220,42 @@ const navigateToUpadateProfile = () => {
   color: #e2e8f0;
 }
 
-/* 프로필 이미지 */
+/* 프로필 이미지 - 테두리 제거 및 그림자 추가 */
 .v-avatar {
-  border: 3px solid #64748b;
-}
-
-/* 통계 정보 카드 */
-.v-card--outlined {
-  border-color: #64748b;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
 }
 
 /* 버튼 */
 .v-btn {
   text-transform: none;
 }
+
+
+/* 멘토 정보 */
+.mentor-col {
+  padding: 100px; /* padding 적용 */
+  box-shadow: none; /* shadow 제거 */
+}
+
+/* 멘티 정보 */
+.mentee-col {
+  padding: 16px; 
+  /* padding 적용 */
+  box-shadow:none /* shadow 제거 */
+}
+
+/* '연정' 이름 텍스트 크기 및 굵기 */
+.text-name {
+  font-size: 2rem;  /* 텍스트 크기 */
+  font-weight: bold; /* 굵게 */
+  color: black; /* 검은색 */
+}
+
+/* '싱어송라이터'와 'iOS 개발자' 설명 텍스트 크기 및 색상 */
+.text-description {
+  font-size: 1.00rem;  /* 텍스트 크기 */
+  font-weight: bold; /* 굵게 */
+  color: #6b7280; /* 회색 색상 */
+}
+
 </style>

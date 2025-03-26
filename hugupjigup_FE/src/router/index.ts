@@ -47,6 +47,7 @@ import NotFoundPage from '@/pages/error/NotFoundPage.vue'
 import NoContent from '@/components/error/NoContent.vue'
 import Forbidden from '@/components/error/Forbidden.vue'
 import InternalServerError from '@/components/error/InternalServerError.vue'
+import {isExpiredJwt} from "@/utils/JwtUtils";
 
 const routes = [
   // 일반 테스트용 라우트
@@ -130,5 +131,26 @@ router.onError((err, to) => {
 router.isReady().then(() => {
   localStorage.removeItem('vuetify:dynamic-reload')
 })
+
+// 글로벌 라우터 가드 설정
+router.beforeEach((to, from, next) => {
+  const refreshToken = localStorage.getItem('refreshToken');
+  const isLoggedIn = refreshToken && !isExpiredJwt(refreshToken);
+
+  // 로그인이 되어 있는 경우
+  if (isLoggedIn) {
+    // 로그인 상태에서 /login 또는 기본 경로로 접근하면 /profile로 리다이렉트
+    if (to.path === '/' || to.path === '/login') {
+      return next({ path: '/profile' });
+    }
+    return next();
+  } else {
+    // 로그인 상태가 아니라면, /login 외의 경로로 접근 시 /login으로 리다이렉트
+    if (to.path === '/login' || to.path === '/signup' || to.path === '/OTP') {
+      return next();
+    }
+    return next('/');
+  }
+});
 
 export default router
