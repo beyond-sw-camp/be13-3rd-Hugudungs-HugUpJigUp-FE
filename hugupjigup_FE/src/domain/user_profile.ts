@@ -2,12 +2,12 @@ export type UserInfo = {
   userId: number,
   nickname: string,
   email: string,
+  currentJob: string,
+  desiredJob: string,
   postCount: number,
   commentCount: number,
   matchingCommentCount: number,
   matchingCount: number,
-  mentorIntroduction: string,
-  menteeIntroduction: string,
   mentorProfile: Profile,
   menteeProfile: Profile
 }
