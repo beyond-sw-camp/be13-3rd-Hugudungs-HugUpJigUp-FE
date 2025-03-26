@@ -57,7 +57,6 @@
   import { ref } from 'vue'
   import router from "@/router";
   import {onMounted} from "vue";
-  import {getJwtPayload} from "@/utils/JwtUtils";
   import {userPinia} from "@/states/user_pinia";
   import {updateUserInfo} from "@/usecases/user_profile_usecase";
 

@@ -1,5 +1,6 @@
 import type {CreateAndUpdateMatchingDto, MatchingListResponseDto, MatchingResponseDto} from "../domain/matching";
 import apiClient from "../data/api_client";
+import type {PageSort} from "../domain/pageable";
 
 export const createMatching =
   async (userId: number, matchingDto: CreateAndUpdateMatchingDto): Promise<MatchingResponseDto> => {
@@ -12,10 +13,10 @@ export const createMatching =
     return response.data.data;
 };
 
-export const getMatchingList = async (page: number=0, size: number=20): Promise<MatchingListResponseDto> => {
+export const getMatchingList = async (page: number=0, size: number=100, sort: PageSort='asc'): Promise<MatchingListResponseDto> => {
   const response = await apiClient.get('/api/v1/matching/posts',
     {
-        params: { page, size }
+        params: { page, size, sort }
       }
     );
 

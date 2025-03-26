@@ -25,3 +25,5 @@ export type Pageable<T> = {
     },
     numberOfElements: number;
 }
+
+export type PageSort = 'asc' | 'desc';
