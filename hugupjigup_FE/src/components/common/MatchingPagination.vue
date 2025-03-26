@@ -32,11 +32,15 @@
   import MatchingPostCard from '@/components/matching/MatchingPostCard.vue'
   
   interface Card {
-    image: string
-    title: string
-    subtitle: string
-    career: string
-    introduction: string
+    image: string;
+    name: string;
+    title: string;
+    career?: string;
+    job?: string;
+    tags?: string[];
+    company: string;
+    info?: string;
+    introduction?: string;
   }
   
   const props = defineProps<{
