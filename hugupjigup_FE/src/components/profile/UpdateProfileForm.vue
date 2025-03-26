@@ -77,6 +77,7 @@
           password: password.value
         });
       } catch (e) {
+        console.error(e);
         alert('프로필 수정에 실패했습니다.');
         return;
       }
