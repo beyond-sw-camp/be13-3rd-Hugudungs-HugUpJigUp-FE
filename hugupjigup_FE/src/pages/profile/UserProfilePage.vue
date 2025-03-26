@@ -14,93 +14,98 @@
         elevation="6"
         rounded="lg"
         class="mx-auto"
+        
         max-width="1200px"
         color="white"
+
         width="100%"
         style="height: fit-content;"
       >
         <v-card-text>
-          <!-- 상단: 게시글, 댓글, 이미지, 자기소개 -->
-          <v-row align="stretch" justify="center" no-gutters spacing="4">
-            <!-- 왼쪽: 게시글 & 댓글 -->
-            <v-col cols="2" class="px-1">
-              <CountLabel 
-                :title="postsCount[0].title" 
-                :subtitle="postsCount[0].subtitle" 
-                :path="postsCount[0].path" 
-              />
-            </v-col>
-            <v-col cols="2" class="px-1">
-              <CountLabel 
-                :title="postsCount[1].title" 
-                :subtitle="postsCount[1].subtitle" 
-                :path="postsCount[1].path" 
-              />
-            </v-col>
-
-            <!-- 중앙: 프로필 이미지 & 자기소개 -->
-            <v-col cols="2" class="px-1 text-center">
-              <v-avatar size="150" class="profile-avatar">
-                <v-img src="https://randomuser.me/api/portraits/women/85.jpg" />
+          <v-row align="center">
+            <v-col
+              cols="12"
+              md="4"
+              class="text-center"
+            >
+              <v-avatar
+                size="150"
+                color="grey-darken-1"
+              >
+                <v-img
+                  src="https://randomuser.me/api/portraits/women/85.jpg"
+                />
               </v-avatar>
               <div class="mt-2">
-                <!-- '연정' 텍스트 크기 및 굵기 증가 -->
-                <div class="text-name">{{ name }}</div>
-                <!-- '싱어송라이터'와 'iOS 개발자' 텍스트 크기 및 회색 색상으로 변경 -->
-                <div class="text-description">{{ description1 }}</div>
-                <div class="text-description">{{ description2 }}</div>
+                <div class="text-h6 font-weight-bold">
+                  {{ userState.user?.nickname ?? 'Nick Name' }}
+                </div>
+                <div class="text-caption text-grey-lighten-1">
+                  {{ `${userState.user?.currentJob ?? '현재 직무를 입력해 주세요.'} / ${userState.user?.desiredJob ?? '희망 직무를 입력해 주세요.'}` }}
+                </div>
               </div>
             </v-col>
+            <v-col
+              cols="12"
+              md="8"
+              style="height: fit-content;"
+            >
+              <v-row>
+                <v-col
+                  v-for="(item, index) in postsCount"
+                  :key="index"
+                  style="height: fit-content;"
+                  cols="6"
+                  md="3"
+                >
+                  <CountLabel
+                    :title="item.title"
+                    :subtitle="item.subtitle"
+                    :path="item.path"
+                  />
+                </v-col>
+              </v-row>
 
-            <!-- 오른쪽: 멘토링 & 후기 -->
-            <v-col cols="2" class="px-1">
-              <CountLabel 
-                :title="postsCount[2].title" 
-                :subtitle="postsCount[2].subtitle" 
-                :path="postsCount[2].path" 
-              />
-            </v-col>
-            <v-col cols="2" class="px-1">
-              <CountLabel 
-                :title="postsCount[3].title" 
-                :subtitle="postsCount[3].subtitle" 
-                :path="postsCount[3].path" 
-              />
+              <v-row
+                justify="end"
+                class="mt-4"
+              >
+                <v-col cols="auto">
+                  <v-btn
+                    color="error"
+                    rounded="pill"
+                    prepend-icon="mdi-logout"
+                    @click="doLogout"
+                  >
+                    Log out
+                  </v-btn>
+                </v-col>
+                <v-col cols="auto">
+                  <v-btn
+                    color="primary"
+                    rounded="pill"
+                    prepend-icon="mdi-pencil"
+                    @click="navigateToUpadateProfile"
+                  >
+                    Edit
+                  </v-btn>
+                </v-col>
+              </v-row>
             </v-col>
           </v-row>
 
-          <!-- 하단: 로그아웃 & 프로필 수정 버튼 -->
-          <v-row justify="end" align="center" class="mt-4" spacing="4">
-            <v-col cols="auto">
-              <v-btn color="rgb(255,0,0)" rounded="pill" prepend-icon="mdi-logout" @click="doLogout">
-                Log out
-              </v-btn>
-            </v-col>
-            <v-col cols="auto">
-              <v-btn color="rgb(0,0,255)" rounded="pill" prepend-icon="mdi-pencil" @click="navigateToUpdateProfile">
-                Edit
-              </v-btn>
-            </v-col>
-          </v-row>
-
-          <!-- 멘토 / 멘티 정보 -->
-          <v-row no-gutters spacing="6" class="mt-4">
-            <!-- 멘토 정보 -->
-            <v-col cols="6" class="px-1 mentor-col">
-              <MentorMenteeContext 
-                :title="mentorMenteeInfo[0].title" 
-                :text="mentorMenteeInfo[0].text" 
-                :path="mentorMenteeInfo[0].path" 
-              />
-            </v-col>
-
-
-            <!-- 멘티 정보 -->
-            <v-col cols="6" class="px-1 mentee-col">
-              <MentorMenteeContext 
-                :title="mentorMenteeInfo[1].title" 
-                :text="mentorMenteeInfo[1].text" 
-                :path="mentorMenteeInfo[1].path" 
+          <v-row>
+            <v-col
+              v-for="(item, index) in mentorMenteeInfo"
+              :key="index"
+              cols="12"
+              md="6"
+              style="height: fit-content;"
+            >
+              <MentorMenteeContext
+                :title="item.title"
+                :text="item.text"
+                :path="item.path"
               />
             </v-col>
           </v-row>
@@ -111,10 +116,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import {onMounted, ref} from "vue";
 import CountLabel from "@/components/profile/CountLabel.vue";
 import MentorMenteeContext from "@/components/profile/MentorMenteeContext.vue";
 import router from "@/router";
+import {logout} from "@/usecases/user_usecase";
+import { userPinia } from "@/states/user_pinia";
+
+const userState = userPinia();
+
+onMounted(async () => {
+  await userState.initUser();
+});
 
 interface CardData {
   title: string;
@@ -134,27 +147,59 @@ const description1 = ref('싱어송라이터');
 const description2 = ref('iOS 개발자');
 
 const postsCount = ref<CardData[]>([
-  { title: "작성한 게시글", subtitle: "31", path: "myposts" },
-  { title: "작성한 댓글", subtitle: "14", path: "mycomments" },
-  { title: "멘토링 개설", subtitle: "21", path: "mymentorings" },
-  { title: "멘티 참여", subtitle: "18", path: "mymentees" },
+  {
+    title: "게시글",
+    subtitle: (userState.user?.postCount  ?? 0).toString(),
+    path: "myposts"
+  },
+  {
+    title: "댓글",
+    subtitle: (userState.user?.commentCount  ?? 0).toString(),
+    path: "mycomments"
+  },
+  {
+    title: "멘토링",
+    subtitle: (userState.user?.matchingCount  ?? 0).toString(),
+    path: "mymentorings"
+  },
+  {
+    title: "후기",
+    subtitle:(userState.user?.matchingCommentCount  ?? 0).toString(),
+    path: "mymentees"
+  },
 ]);
 
 const mentorMenteeInfo = ref<ContextDto[]>([
-  { title: "멘토", text: "서투른 낙서 같은 나에게 물어봐 ...", path: "updatementor" },
-  { title: "멘티", text: "그땐 생각지도 못했던 내가 여기 있지 ...", path: "updatementee" },
+  {
+    title: "멘토",
+    text: userState.user?.mentorProfile.introduction ?? '멘토 자기소개를 입력해 주세요.',
+    path: 'updatementor',
+  },
+  {
+    title: "멘티",
+    text: userState.user?.menteeProfile.introduction ?? '멘티 자기소개를 입력해 주세요.',
+    path: 'updatementee',
+  },
 ]);
 
-const doLogout = () => {
+const doLogout = async () => {
   const confirmLogout = window.confirm("정말로 로그아웃 하시겠습니까?");
   if (confirmLogout) {
-    router.push(`/logout`);
+    const response = await logout();
+    if (response) {
+      router.replace('/login');
+    } else {
+      alert('로그아웃에 실패했습니다.');
+    }
+    // router.push(`/logout`);
   }
 };
 
-const navigateToUpdateProfile = () => {
-  router.push('/updateprofile');
-};
+
+const navigateToUpadateProfile = () => {
+  router.push('/update-profile')
+}
+
 </script>
 
 <style scoped>
@@ -185,6 +230,7 @@ const navigateToUpdateProfile = () => {
   text-transform: none;
 }
 
+
 /* 멘토 정보 */
 .mentor-col {
   padding: 100px; /* padding 적용 */
@@ -211,4 +257,5 @@ const navigateToUpdateProfile = () => {
   font-weight: bold; /* 굵게 */
   color: #6b7280; /* 회색 색상 */
 }
+
 </style>
