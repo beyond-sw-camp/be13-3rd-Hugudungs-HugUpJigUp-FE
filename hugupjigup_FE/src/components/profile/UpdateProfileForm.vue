@@ -2,7 +2,7 @@
     <div class="form-wrapper">
       <v-card class="form-card" elevation="4" color="white" theme="light">
         <div class="title">기본 프로필 수정</div>
-  
+
         <div class="avatar-wrapper">
           <v-avatar size="120" class="profile-avatar">
             <img
@@ -11,7 +11,7 @@
             />
           </v-avatar>
         </div>
-  
+
         <v-form class="form-fields">
           <v-text-field
             v-model="name"
@@ -21,7 +21,7 @@
             density="comfortable"
             class="rounded-input bold-placeholder"
           ></v-text-field>
-  
+
           <v-text-field
             v-model="email"
             placeholder="Email"
@@ -30,7 +30,7 @@
             density="comfortable"
             class="rounded-input bold-placeholder"
           ></v-text-field>
-  
+
           <v-text-field
             v-model="password"
             placeholder="Password"
@@ -40,26 +40,36 @@
             density="comfortable"
             class="rounded-input bold-placeholder"
           ></v-text-field>
-  
+
         </v-form>
-  
+
         <!-- 버튼: 카드 내부에 포함 -->
         <div class="button-wrapper">
-          <v-btn color="red" block class="rounded-button">취소</v-btn>
-          <v-btn color="black" block class="rounded-button">완료</v-btn>
+          <v-btn color="red" block class="rounded-button" @click="onCancel">취소</v-btn>
+          <v-btn color="black" block class="rounded-button" @click="onComplete">완료</v-btn>
         </div>
       </v-card>
     </div>
   </template>
-  
+
   <script lang="ts" setup>
   import { ref } from 'vue'
-  
+  import router from "@/router";
+
   const name = ref('')
   const email = ref('')
   const password = ref('')
+
+  const onCancel = () => {
+    router.back();
+  }
+
+  const onComplete = () => {
+    console.log(name.value, email.value, password.value);
+  }
+
   </script>
-  
+
   <style scoped>
   .form-wrapper {
     background-color: #0d1540;
@@ -69,7 +79,7 @@
     align-items: center;
     padding: 24px;
   }
-  
+
   .form-card {
     width: 360px;
     border-radius: 16px;
@@ -79,22 +89,22 @@
     align-items: center;
     background-color: #ffffff;
   }
-  
+
   .title {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 16px;
   }
-  
+
   .avatar-wrapper {
     margin-bottom: 24px;
   }
-  
+
   .profile-avatar {
     border-radius: 50%;
     overflow: hidden;
   }
-  
+
   .form-fields {
     width: 100%;
     display: flex;
@@ -102,30 +112,29 @@
     gap: 12px;
     margin-bottom: 24px;
   }
-  
+
   .button-wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
-  
+
   /* 입력 필드 둥근 스타일 */
   .rounded-input :deep(.v-field) {
     border-radius: 12px;
     background-color: #fff;
   }
-  
+
   /* placeholder 굵게 */
   .bold-placeholder :deep(::placeholder) {
     font-weight: bold;
     color: #999;
   }
-  
+
   /* 둥근 버튼 */
   .rounded-button {
     border-radius: 8px;
     font-weight: bold;
   }
   </style>
-  

@@ -1,7 +1,6 @@
 import axios from "axios";
 import {isExpiredJwt} from "../utils/JwtUtils";
 import {refreshToken} from "../usecases/user_usecase";
-import {el} from "vuetify/locale";
 
 const apiClient = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
