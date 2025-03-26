@@ -7,7 +7,6 @@
         background-color: #1e293b;
         display: flex;
         align-items: center;
-        height: fit-content;
         justify-content: center;
       "
     >
@@ -15,7 +14,10 @@
         elevation="6"
         rounded="lg"
         class="mx-auto"
-        max-width="1000px"
+        
+        max-width="1200px"
+        color="white"
+
         width="100%"
         style="height: fit-content;"
       >
@@ -139,6 +141,11 @@ interface ContextDto {
   path: string;
 }
 
+// 데이터 바인딩을 위한 변수 선언
+const name = ref('연정');
+const description1 = ref('싱어송라이터');
+const description2 = ref('iOS 개발자');
+
 const postsCount = ref<CardData[]>([
   {
     title: "게시글",
@@ -177,7 +184,6 @@ const mentorMenteeInfo = ref<ContextDto[]>([
 
 const doLogout = async () => {
   const confirmLogout = window.confirm("정말로 로그아웃 하시겠습니까?");
-
   if (confirmLogout) {
     const response = await logout();
     if (response) {
@@ -188,6 +194,7 @@ const doLogout = async () => {
     // router.push(`/logout`);
   }
 };
+
 
 const navigateToUpadateProfile = () => {
   router.push('/update-profile')
@@ -213,18 +220,42 @@ const navigateToUpadateProfile = () => {
   color: #e2e8f0;
 }
 
-/* 프로필 이미지 */
+/* 프로필 이미지 - 테두리 제거 및 그림자 추가 */
 .v-avatar {
-  border: 3px solid #64748b;
-}
-
-/* 통계 정보 카드 */
-.v-card--outlined {
-  border-color: #64748b;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
 }
 
 /* 버튼 */
 .v-btn {
   text-transform: none;
 }
+
+
+/* 멘토 정보 */
+.mentor-col {
+  padding: 100px; /* padding 적용 */
+  box-shadow: none; /* shadow 제거 */
+}
+
+/* 멘티 정보 */
+.mentee-col {
+  padding: 16px; 
+  /* padding 적용 */
+  box-shadow:none /* shadow 제거 */
+}
+
+/* '연정' 이름 텍스트 크기 및 굵기 */
+.text-name {
+  font-size: 2rem;  /* 텍스트 크기 */
+  font-weight: bold; /* 굵게 */
+  color: black; /* 검은색 */
+}
+
+/* '싱어송라이터'와 'iOS 개발자' 설명 텍스트 크기 및 색상 */
+.text-description {
+  font-size: 1.00rem;  /* 텍스트 크기 */
+  font-weight: bold; /* 굵게 */
+  color: #6b7280; /* 회색 색상 */
+}
+
 </style>
