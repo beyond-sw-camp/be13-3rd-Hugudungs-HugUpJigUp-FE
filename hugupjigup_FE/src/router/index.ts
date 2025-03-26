@@ -28,6 +28,7 @@ import InsertTextForm from '@/components/sign/InsertTextForm.vue'
 
 import PostsList from '@/components/board/PostsList.vue'
 import Layout from '@/components/common/Layout.vue'
+import SearchActionBar from '@/components/common/SearchActionBar.vue'
 
 // Pages
 import DecisionMatchingPage from '@/pages/matching/DecisionMatchingPage.vue'
@@ -68,6 +69,7 @@ const routes = [
   { path: '/insert', component: InsertTextForm },
   { path: '/postslist', component: PostsList },
   { path: '/layout', component:Layout },
+  { path: '/actionbar', component:SearchActionBar },
 
   // Matching 관련
   { path: '/create-matching-comment', component: CreateMatchingCommentPage },
