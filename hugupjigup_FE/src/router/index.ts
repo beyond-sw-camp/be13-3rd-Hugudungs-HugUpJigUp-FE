@@ -36,6 +36,9 @@ import MatchingPage from '@/pages/matching/MatchingPage.vue'
 import SignUpPage from '@/pages/sign/SignUpPage.vue'
 import UserProfilePage from '@/pages/profile/UserProfilePage.vue'
 import SignInPage from '@/pages/sign/SignInPage.vue'
+import CreateNoticePostPage from '@/pages/board/CreateNoticePostPage.vue'
+
+
 
 // Error Pages
 import NotFoundPage from '@/pages/error/NotFoundPage.vue'
@@ -75,6 +78,8 @@ const routes = [
   { path: '/signup', component: SignUpPage },
   { path: '/profile', component: UserProfilePage },
   { path: '/login', component: SignInPage },
+  { path: '/create-notice-post', component: CreateNoticePostPage },
+
 
   // ✅ 에러 테스트용 라우트 (개발 중 테스트용)
   {
