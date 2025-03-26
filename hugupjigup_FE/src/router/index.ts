@@ -43,7 +43,6 @@ import NoContent from '@/components/error/NoContent.vue'
 import Forbidden from '@/components/error/Forbidden.vue'
 import InternalServerError from '@/components/error/InternalServerError.vue'
 import {isExpiredJwt} from "@/utils/JwtUtils";
-import {el} from "vuetify/locale";
 
 const routes = [
   // 일반 테스트용 라우트
@@ -138,10 +137,10 @@ router.beforeEach((to, from, next) => {
     return next();
   } else {
     // 로그인 상태가 아니라면, /login 외의 경로로 접근 시 /login으로 리다이렉트
-    if (to.path !== '/login') {
-      return next({ path: '/login' });
+    if (to.path === '/login' || to.path === '/signup' || to.path === '/OTP') {
+      return next();
     }
-    return next();
+    return next('/');
   }
 });
 
