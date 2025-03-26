@@ -42,7 +42,9 @@
           class="custom-input"
           @blur="validateField('password')"
         />
-        <span class="toggle-password" @click="togglePassword">👁️</span>
+        <span class="toggle-password" @click="togglePassword">
+          <v-icon color="grey">{{ hidePassword ? 'mdi-eye' : 'mdi-eye-off' }}</v-icon>
+        </span>
       </div>
       <div v-if="passwordError" class="error-text">{{ passwordError }}</div>
 
@@ -203,7 +205,7 @@ async function login() {
 <style scoped>
 .form-container {
   width: 300px;
-  margin: auto;
+  margin: 60px auto 0 auto;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 16px;
@@ -211,6 +213,7 @@ async function login() {
   display: flex;
   flex-direction: column;
   position: relative;
+  box-shadow: 8px 12px 24px rgba(0, 0, 0, 0.35);
 }
 
 .divider-text {
@@ -261,6 +264,7 @@ async function login() {
   right: 12px;
   top: 10px;
   cursor: pointer;
+  font-size: 15px;
 }
 
 .password-strength {
@@ -316,6 +320,10 @@ async function login() {
   text-decoration: none;
 }
 
+.checkbox-container:last-of-type {
+  margin-bottom: 12px;
+}
+
 .button-wrapper {
   text-align: center;
 }
@@ -331,6 +339,9 @@ async function login() {
   cursor: pointer;
   display: inline-block;
   text-align: center;
+
+  width: 160px;
+  max-width: 100%;
 }
 
 .button-wrapper + .button-wrapper {
