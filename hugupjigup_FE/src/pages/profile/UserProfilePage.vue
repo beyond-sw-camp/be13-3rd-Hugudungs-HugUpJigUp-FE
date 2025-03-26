@@ -4,30 +4,30 @@
       fluid
       class="pa-1"
       style="
-        background-color: #1e293b; 
-        display: flex; 
+        background-color: #1e293b;
+        display: flex;
         align-items: center;
         height: fit-content;
         justify-content: center;
       "
     >
-      <v-card 
-        elevation="6" 
-        rounded="lg" 
-        class="mx-auto" 
+      <v-card
+        elevation="6"
+        rounded="lg"
+        class="mx-auto"
         max-width="1000px"
         width="100%"
         style="height: fit-content;"
       >
         <v-card-text>
           <v-row align="center">
-            <v-col 
-              cols="12" 
-              md="4" 
+            <v-col
+              cols="12"
+              md="4"
               class="text-center"
             >
-              <v-avatar 
-                size="150" 
+              <v-avatar
+                size="150"
                 color="grey-darken-1"
               >
                 <v-img
@@ -56,22 +56,22 @@
                   cols="6"
                   md="3"
                 >
-                  <CountLabel 
-                    :title="item.title" 
+                  <CountLabel
+                    :title="item.title"
                     :subtitle="item.subtitle"
                     :path="item.path"
                   />
                 </v-col>
               </v-row>
 
-              <v-row 
-                justify="end" 
+              <v-row
+                justify="end"
                 class="mt-4"
               >
                 <v-col cols="auto">
-                  <v-btn 
-                    color="error" 
-                    rounded="pill" 
+                  <v-btn
+                    color="error"
+                    rounded="pill"
                     prepend-icon="mdi-logout"
                     @click="doLogout"
                   >
@@ -84,7 +84,7 @@
                     rounded="pill"
                     prepend-icon="mdi-pencil"
                     @click="navigateToUpadateProfile"
-                  > 
+                  >
                     Edit
                   </v-btn>
                 </v-col>
@@ -100,8 +100,8 @@
               md="6"
               style="height: fit-content;"
             >
-              <MentorMenteeContext 
-                :title="item.title" 
+              <MentorMenteeContext
+                :title="item.title"
                 :text="item.text"
                 :path="item.path"
               />
@@ -118,6 +118,7 @@ import { ref } from "vue";
 import CountLabel from "@/components/profile/CountLabel.vue";
 import MentorMenteeContext from "@/components/profile/MentorMenteeContext.vue";
 import router from "@/router";
+import {logout} from "@/usecases/user_usecase";
 
 interface CardData {
   title: string;
@@ -205,11 +206,17 @@ const mentorMenteeInfo = ref<ContextDto[]>([
   },
 ]);
 
-const doLogout = () => {
+const doLogout = async () => {
   const confirmLogout = window.confirm("정말로 로그아웃 하시겠습니까?");
-  
+
   if (confirmLogout) {
-    router.push(`/logout`);
+    const response = await logout();
+    if (response) {
+      router.replace('/login');
+    } else {
+      alert('로그아웃에 실패했습니다.');
+    }
+    // router.push(`/logout`);
   }
 };
 
