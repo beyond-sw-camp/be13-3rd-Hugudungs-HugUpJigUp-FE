@@ -145,7 +145,7 @@ router.beforeEach((to, from, next) => {
     if (to.path === '/login' || to.path === '/signup' || to.path === '/OTP') {
       return next();
     }
-    return next('/');
+    return next('/login');
   }
 });
 
