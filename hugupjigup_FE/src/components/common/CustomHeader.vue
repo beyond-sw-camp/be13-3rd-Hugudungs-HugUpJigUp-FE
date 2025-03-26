@@ -1,23 +1,20 @@
 <template>
-  <v-card>
-    <v-toolbar height="300px">
-      <v-img :src="logoUrl" max-height="200" max-width="200" contain />
-      <v-toolbar-title class="ml-2">
-        로고 이름
-      </v-toolbar-title>
-
-      <v-tabs>
-        <v-tab
-          v-for="tab in tabs"
-          :key="tab.name"
-          :to="tab.to"
-          router
-          :text="tab.text"
-          height="100px"
-        />
-      </v-tabs>
-    </v-toolbar>
-  </v-card>
+  <div class="header-inner">
+    <div class="header-left">
+      <img :src="logoUrl" alt="로고" class="logo" />
+      <span class="logo-title">허겁 직업</span>
+    </div>
+    <nav class="header-tabs">
+      <router-link
+        v-for="tab in tabs"
+        :key="tab.name"
+        :to="tab.to"
+        class="tab"
+      >
+        {{ tab.text }}
+      </router-link>
+    </nav>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -35,3 +32,47 @@ interface Props {
 
 const props = defineProps<Props>();
 </script>
+
+<style scoped>
+/* ✅ 헤더 전체 컨테이너에서 배경 제거하고 이름 변경 */
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  color: white;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 60px;
+  width: 60px;
+  object-fit: contain;
+  margin-right: 12px;
+}
+
+.logo-title {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.header-tabs {
+  display: flex;
+  gap: 30px;
+}
+
+.tab {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.tab:hover {
+  text-decoration: underline;
+}
+</style>

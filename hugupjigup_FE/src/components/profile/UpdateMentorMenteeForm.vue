@@ -1,48 +1,37 @@
 <template>
-  <v-app>
-    <v-container>
-      <v-row justify="center">
-        <v-col cols="12" sm="6" md="4">
-          <v-card class="profile-edit-card">
-            <v-card-text>
-              <h2 class="profile-edit-title">{{ profileTitle }} 프로필 수정</h2>
+  <div class="form-wrapper">
+    <div class="form-card">
+      <h2 class="form-title">{{ profileTitle }} 프로필 수정</h2>
 
-              <v-text-field
-                v-model="currentJob"
-                :label="jobLabel"
-                outlined
-              ></v-text-field>
-              <v-text-field
-                v-model="introduction"
-                label="자기소개"
-                outlined
-              ></v-text-field>
-              <v-text-field
-                v-model="career"
-                label="경력"
-                outlined
-              ></v-text-field>
+      <div class="form-group">
+        <input
+          type="text"
+          v-model="currentJob"
+          :placeholder="jobLabel"
+          class="form-input"
+        />
+      </div>
 
-              <v-btn
-                block
-                class="cancel-button"
-                @click="cancelEdit"
-              >
-                취소
-              </v-btn>
-              <v-btn
-                block
-                class="complete-button"
-                @click="completeEdit"
-              >
-                완료
-              </v-btn>
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-app>
+      <div class="form-group">
+        <textarea
+          v-model="introduction"
+          placeholder="자기소개"
+          class="form-textarea"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <textarea
+          v-model="career"
+          placeholder="경력"
+          class="form-textarea"
+        ></textarea>
+      </div>
+
+      <button class="cancel-btn" @click="cancelEdit">취소</button>
+      <button class="complete-btn" @click="completeEdit">완료</button>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -86,43 +75,73 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.profile-edit-card {
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: white !important; /* 흰색 배경, 중요도 높임 */
-  color: black !important; /* 텍스트 색상 검은색, 중요도 높임 */
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
 }
 
-.profile-edit-title {
-  font-size: 2em;
+.form-card {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  font-size: 22px;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 20px;
-  color: black !important; /* 텍스트 색상 검은색, 중요도 높임 */
+  margin-bottom: 24px;
+  color: black;
 }
 
-.cancel-button {
-  margin-top: 20px;
-  color: white !important; /* 텍스트 색상, 중요도 높임 */
-  background-color: #FF5733 !important; /* 이미지의 빨간색, 중요도 높임 */
-  border: none !important; /* 테두리 제거, 중요도 높임 */
+.form-group {
+  margin-bottom: 16px;
 }
 
-.complete-button {
-  margin-top: 10px;
-  color: white !important; /* 텍스트 색상, 중요도 높임 */
-  background-color: #333333 !important; /* 이미지의 어두운 회색, 중요도 높임 */
-  border: none !important; /* 테두리 제거, 중요도 높임 */
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #e4e4e4;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: black;
 }
 
-/* 텍스트 필드 내부 텍스트 색상 */
-.v-text-field >>> input {
-  color: black !important;
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
 }
 
-/* 텍스트 필드 label 색상 */
-.v-label {
-  color: black !important;
+.cancel-btn,
+.complete-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: #e53935; /* 진한 빨간색 */
+}
+
+.complete-btn {
+  background-color: #333333;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #b0b0b0;
+  opacity: 1;
 }
 </style>
