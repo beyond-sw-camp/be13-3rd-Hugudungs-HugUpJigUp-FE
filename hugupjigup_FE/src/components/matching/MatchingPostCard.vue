@@ -106,6 +106,13 @@ defineProps<{
   margin-left: 16px;
   white-space: pre-line;
   margin-bottom: 16px;
+
+  /* 줄임 처리 관련 속성 추가 */
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* 최대 4줄까지만 표시 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .space-between-sections {

@@ -79,8 +79,10 @@
 
         <div>
           <div class="section-label">• 자기소개</div>
-          <div class="text-grey-darken-1" style="white-space: pre-line;">
-            {{ card.introduction }}
+          <div class="introduction-scroll-wrapper">
+            <div class="scrollable-text">
+              {{ card.introduction }}
+            </div>
           </div>
         </div>
       </v-card-text>
@@ -127,5 +129,21 @@ defineProps<{
   color: #666;
   font-weight: normal;
   margin-bottom: 4px;
+}
+
+.introduction-scroll-wrapper {
+  max-height: 200px; /* 기존보다 약간 높임 */
+  overflow-y: auto;
+  padding: 12px 6px; /* 상하 여백 추가 */
+  margin-bottom: 16px;
+  background-color: #ffffff; /* 배경색 살짝 주면 구분감 ↑ */
+  border-radius: 8px; /* 둥근 느낌 */
+}
+
+.scrollable-text {
+  white-space: pre-line;
+  color: #666;
+  line-height: 1.5;
+  font-size: 0.95rem;
 }
 </style>
