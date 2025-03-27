@@ -1,10 +1,9 @@
 <template>
   <v-app>
     <v-container
-  fluid
-  class="pa-1 d-flex align-center justify-center"
-  style="background-color: transparent; padding-top: 52px;">
-
+      fluid
+      class="pa-1 pt-16 d-flex align-center justify-center"
+      style="background-color: transparent;">
       <v-card
         elevation="6"
         rounded="lg"
@@ -37,28 +36,30 @@
 
             <!-- 중앙 프로필 정보 -->
             <v-col cols="12" md="4" class="text-center d-flex flex-column align-center justify-center">
-              <v-avatar size="150" class="profile-avatar">
-                <v-img
-                  src="https://randomuser.me/api/portraits/women/85.jpg"
-                  cover
-                />
-              </v-avatar>
-              <div class="mt-2">
-                <div class="text-h6 font-weight-bold text-black">
-                  {{ userState.user?.nickname ?? 'Nick Name' }}
-                </div>
-                <div class="text-caption text-gray-dark">
-                  <v-row no-gutters>
-                    <v-col cols="12" class="pa-0">
-                      {{ userState.user?.currentJob ?? '현재 직무를 입력해 주세요.' }}
-                    </v-col>
-                    <v-col cols="12" class="pa-0">
-                      {{ userState.user?.desiredJob ?? '희망 직무를 입력해 주세요.' }}
-                    </v-col>
-                  </v-row>
-                </div>
-              </div>
-            </v-col>
+  <v-avatar size="150" class="profile-avatar">
+    <v-img
+      src="https://randomuser.me/api/portraits/women/85.jpg"
+      cover
+    />
+  </v-avatar>
+  <div class="mt-2">
+    <div class="text-h6 font-weight-bold text-black text-point-name">
+      {{ userState.user?.nickname ?? 'Nick Name' }}
+    </div>
+    <div class="text-caption text-gray-dark text-point-job">
+      <v-row no-gutters>
+        <v-col cols="12" class="pa-0">
+          {{ userState.user?.currentJob ?? '현재 직무를 입력해 주세요.' }}
+        </v-col>
+        <v-col cols="12" class="pa-0">
+          {{ userState.user?.desiredJob ?? '희망 직무를 입력해 주세요.' }}
+        </v-col>
+      </v-row>
+    </div>
+  </div>
+</v-col>
+
+
 
             <!-- 우측 카운트 레이블 -->
             <v-col cols="12" md="4" class="d-flex flex-column justify-center">
@@ -103,27 +104,29 @@
               </v-row>
             </v-col>
           </v-row>
-
-          <v-row>
-            <v-col cols="12" md="6">
-              <MentorMenteeContext
-                title="멘토"
-                :text="userState.user?.mentorProfile?.introduction ?? '멘토 자기소개를 입력해 주세요.'"
-                path="updatementor"
-              />
-            </v-col>
-            <v-col cols="12" md="6">
-              <MentorMenteeContext
-                title="멘티"
-                :text="userState.user?.menteeProfile?.introduction ?? '멘티 자기소개를 입력해 주세요.'"
-                path="updatementee"
-              />
-            </v-col>
-          </v-row>
+<br><br>
+<v-row>
+  <v-col cols="12" md="6" class="pa-4" style="height: 200%;">
+    <MentorMenteeContext
+      title="멘토"
+      :text="userState.user?.mentorProfile?.introduction ?? '멘토 자기소개를 입력해 주세요.'"
+      path="updatementor"
+    />
+  </v-col>
+  <v-col cols="12" md="6" class="pa-4" style="height: 200%;">
+    <MentorMenteeContext
+      title="멘티"
+      :text="userState.user?.menteeProfile?.introduction ?? '멘티 자기소개를 입력해 주세요.'"
+      path="updatementee"
+    />
+  </v-col>
+</v-row>
+<br>
         </v-card-text>
       </v-card>
     </v-container>
   </v-app>
+  
 </template>
 
 <script setup lang="ts">
@@ -185,5 +188,15 @@ const navigateToUpdateProfile = () => {
 /* 버튼 */
 .v-btn {
   text-transform: none;
+}
+
+/* 닉네임 크기 */
+.text-point-name {
+  font-size: 26px !important;
+}
+
+/* 직업 크기 */
+.text-point-job {
+  font-size: 16px !important;
 }
 </style>
