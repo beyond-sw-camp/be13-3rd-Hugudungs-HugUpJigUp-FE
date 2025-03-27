@@ -22,6 +22,7 @@ declare module 'vue' {
     InternalServerError: typeof import('./src/components/error/InternalServerError.vue')['default']
     Layout: typeof import('./src/components/common/Layout.vue')['default']
     MatchingCommentCard: typeof import('./src/components/matching/MatchingCommentCard.vue')['default']
+    MatchingCommentPagination: typeof import('./src/components/common/MatchingCommentPagination.vue')['default']
     MatchingPagination: typeof import('./src/components/common/MatchingPagination.vue')['default']
     MatchingPopup: typeof import('./src/components/matching/MatchingPopup.vue')['default']
     MatchingPostCard: typeof import('./src/components/matching/MatchingPostCard.vue')['default']
