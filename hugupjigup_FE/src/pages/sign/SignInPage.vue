@@ -47,7 +47,7 @@
 
         <div class="auth-links">
           <a href="#" class="forgot-password">Forgot password?</a>
-          <a href="#" class="create-account">Create new account</a>
+          <a href="#" class="create-account" @click.prevent="goToSignUp">Create new account</a>
         </div>
       </v-form>
     </v-sheet>
@@ -110,6 +110,10 @@
       passwordErrorMsg.value = "이메일이나 비밀번호가 일치하지 않습니다.";
     }
   }
+
+  function goToSignUp() {
+  router.push("/signup");
+}
   </script>
 
   <style scoped>

@@ -1,5 +1,6 @@
 <template>
-  <v-sheet class="mx-auto" elevation="4" width="300">
+  <!-- <v-sheet class="mx-auto" elevation="4" width="300"> -->
+    <div class="form-container">
         <div class="divider-text">Sign in with</div>
 
         <div class="oauth-section">
@@ -16,7 +17,7 @@
           <div class="divider-text">Or sign up with credentials</div>
 
       <v-form ref="formRef">
-        <v-text-field
+        <!-- <v-text-field
           v-model="nickname"
           :counter="10"
           :rules="nicknameRules"
@@ -33,9 +34,9 @@
           중복 확인
         </v-btn>
       </template>
-      </v-text-field>
+      </v-text-field> -->
 
-        <v-text-field
+        <!-- <v-text-field
           v-model="email"
           :rules="emailRules"
           label="E-mail"
@@ -52,9 +53,9 @@
           중복 확인
         </v-btn>
       </template>
-    </v-text-field>
+    </v-text-field> -->
 
-        <v-text-field
+        <!-- <v-text-field
           v-model="password"
           :rules="passwordRules"
           label="Password"
@@ -62,14 +63,55 @@
           append-icon="mdi-eye"
             @click:append="togglePassword"
           required
-        ></v-text-field>
+        ></v-text-field> -->
+        <div class="input-group">
+        <input
+        type="text"
+        v-model="nickname"
+        :placeholder="nicknamePlaceholder"
+        class="custom-input"
+        @blur="validateField('nickname')"
+      />
+      <button type="button" class="duplicate-check-btn" @click="checkNickname">
+          check
+        </button>
+        </div>
+      <div v-if="nicknameError" class="error-text">{{ nicknameErrorMsg }}</div>
+
+      <div class="input-group">
+      <input
+        type="email"
+        v-model="email"
+        :placeholder="emailPlaceholder"
+        class="custom-input"
+        @blur="validateField('email')"
+      />
+      <button type="button" class="duplicate-check-btn" @click="checkEmail">
+          check
+        </button>
+      </div>
+      <div v-if="emailError" class="error-text">{{ emailErrorMsg }}</div>
+
+      <div class="password-wrapper">
+        <input
+          :type="hidePassword ? 'password' : 'text'"
+          v-model="password"
+          :placeholder="passwordPlaceholder"
+          class="custom-input"
+          @blur="validateField('password')"
+        />
+        <span class="toggle-password" @click="togglePassword">
+          <v-icon color="grey">{{ hidePassword ? 'mdi-eye' : 'mdi-eye-off' }}</v-icon>
+        </span>
+      </div>
+      <div v-if="passwordError" class="error-text">{{ passwordError }}</div>
 
         <div class="password-strength">
           password strength:
           <span :class="strengthColor">{{ passwordStrength }}</span>
         </div>
 
-        <v-checkbox
+        <!-- <v-checkbox
           v-model="checkbox"
           :rules="[(v: boolean) => !!v || '진행하려면 약관에 동의해야 합니다.']"
           required
@@ -84,18 +126,28 @@
               Privacy Policy </a
             >
           </template>
-        </v-checkbox>
+        </v-checkbox> -->
 
-        <div class="d-flex flex-column">
+        <label class="checkbox-container">
+        <input type="checkbox" v-model="checkbox" />
+        I agree with the <a href="#" target="_blank">Privacy Policy</a>
+      </label>
+
+        <!-- <div class="d-flex flex-column">
           <v-btn class="mt-4" color="success" block @click="validate">
             CREATE ACCOUNT
           </v-btn>
-        </div>
+        </div> -->
+
+        <div class="button-wrapper">
+        <button type="button" class="custom-button" @click="validate">CREATE ACCOUNT</button>
+      </div>
       </v-form>
 
       <!-- OTP 팝업 -->
       <OTPVerify :email="email" :password="password" :nickname="nickname" v-model="otpDialogVisible" @otp-success="onOTPSuccess" @otp-fail="onOTPFail" />
-    </v-sheet>
+    <!-- </v-sheet> -->
+  </div>
 </template>
 
   <script lang="ts" setup>
@@ -113,24 +165,31 @@
 const nicknameErrorMsg = ref('')
 const emailError = ref(false)
 const emailErrorMsg = ref('')
+const passwordError = ref('')
+
+const nicknamePlaceholder = 'Name'
+const emailPlaceholder = 'E-mail'
+const passwordPlaceholder = 'Password'
 
       const nickname = ref<string>('')
-      const nicknameRules = ref([
-        (v: string) => !!v || '닉네임을 작성해 주세요',
-        (v: string) => (v && v.length <= 10) || '닉네임은 최대 10자 입니다.',
-      ])
+        const nicknameRules = [
+  (v: string) => !!v || '닉네임을 작성해 주세요',
+  (v: string) => v.length <= 10 || '닉네임은 최대 10자 입니다.',
+]
 
       const email = ref<string>('')
-      const emailRules = ref([
-        (v: string) => !!v || '이메일을 입력해 주세요.',
-        (v: string) => (/.+@.+\..+/.test(v)) || '이메일 형식이 올바르지 않습니다.',
-      ])
+        const emailRules = [
+  (v: string) => !!v || '이메일을 입력해 주세요.',
+  (v: string) => /.+@.+\..+/.test(v) || '이메일 형식이 올바르지 않습니다.',
+]
 
       const password = ref<string>('')
-      const passwordRules = ref([
-        (v: string) => !!v || '비밀번호를 입력해 주세요.',
-        (v: string) => (/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,}$/.test(v)) || '비밀번호는 영문, 숫자, 특수 기호를 포함한 최소 8자 이상이여야 합니다.',
-      ])
+        const passwordRules = [
+  (v: string) => !!v || '비밀번호를 입력해 주세요.',
+  (v: string) =>
+    /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,}$/.test(v) ||
+    '비밀번호는 영문, 숫자, 특수 기호를 포함한 최소 8자 이상이여야 합니다.',
+]
 
       const hidePassword = ref<boolean>(true)
 function togglePassword() {
@@ -152,6 +211,34 @@ function togglePassword() {
         default:       return ''
       }
     })
+
+    function validateField(field: string): boolean {
+  let rules, value, errorRef
+
+  if (field === 'nickname') {
+    rules = nicknameRules
+    value = nickname.value
+    errorRef = nicknameError
+  } else if (field === 'email') {
+    rules = emailRules
+    value = email.value
+    errorRef = emailError
+  } else if (field === 'password') {
+    rules = passwordRules
+    value = password.value
+    errorRef = passwordError
+  } else return true
+
+  for (const rule of rules) {
+    const result = rule(value)
+    if (result !== true) {
+      errorRef.value = result
+      return false
+    }
+  }
+  errorRef.value = ''
+  return true
+}
 
       const checkbox = ref<boolean>(false)
 
@@ -229,6 +316,18 @@ async function checkEmail() {
   </script>
 
   <style scoped>
+  .form-container {
+  width: 300px;
+  margin: 60px auto 0 auto;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 8px 12px 24px rgba(0, 0, 0, 0.35);
+}
 /* ========= 소셜 로그인 버튼 영역 ========= */
 .oauth-section {
   display: flex;
@@ -239,21 +338,44 @@ async function checkEmail() {
 
 /* ========= 소셜 로그인 버튼 ========= */
 .oauth-button {
+  background-color: black;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
-  background-color: #000;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 0.9rem;
 }
 
 .oauth-button:hover {
   opacity: 0.8;
+}
+
+.custom-input {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 8px;
+  color: black;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 15px;
 }
 
 /* ========= 구분 텍스트 ========= */
@@ -266,9 +388,9 @@ async function checkEmail() {
 
 /* ========= 비밀번호 강도 표시 ========= */
 .password-strength {
-  margin: 4px 0 0 2px;
   font-size: 0.85rem;
   color: #666;
+  margin-bottom: 8px;
 }
 .text-strong {
   color: green;
@@ -280,6 +402,50 @@ async function checkEmail() {
   color: red;
 }
 
+.checkbox-container {
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.checkbox-container input[type='checkbox'] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #555;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox-container input[type='checkbox']:checked::after {
+  content: '✓';
+  position: absolute;
+  top: -2px;
+  left: 3px;
+  font-size: 14px;
+  color: #000;
+}
+
+.checkbox-container a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.checkbox-container a:hover {
+  text-decoration: none;
+}
+
+.checkbox-container:last-of-type {
+  margin-bottom: 12px;
+}
+
+.button-wrapper {
+  text-align: center;
+}
 
 /* ========= 하단 링크 영역 ========= */
 .auth-links {
@@ -289,12 +455,71 @@ async function checkEmail() {
   font-size: 0.85rem;
 }
 
+.custom-button {
+  background-color: black;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+
+  width: 160px;
+  max-width: 100%;
+}
+
+.button-wrapper + .button-wrapper {
+  margin-top: 10px;
+}
+
+.auth-links {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
 .auth-links a {
-  color: blue;
+  color: #aaa;
   text-decoration: underline;
 }
 
 .auth-links a:hover {
   text-decoration: none;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+}
+
+.duplicate-check-btn {
+  margin-left: 8px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.duplicate-check-btn:hover {
+  opacity: 0.9;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
 }
 </style>
