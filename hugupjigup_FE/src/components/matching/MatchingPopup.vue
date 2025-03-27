@@ -4,13 +4,7 @@
       <v-btn color="primary" v-bind="props">자세히 보기</v-btn>
     </template>
 
-    <!-- 둥근 팝업 카드 -->
-    <v-card
-      color="white"
-      class="pa-4"
-      style="position: relative; border-radius: 16px;"
-    >
-      <!-- 닫기 버튼 -->
+    <v-card color="white" class="pa-4" style="position: relative; border-radius: 16px;">
       <v-icon
         icon="mdi-close"
         class="text-black"
@@ -18,7 +12,6 @@
         @click="dialog = false"
       />
 
-      <!-- 태그 리스트 -->
       <div style="position: absolute; top: 56px; right: 16px; z-index: 1;">
         <v-chip
           v-for="(tag, index) in card.tags"
@@ -39,10 +32,7 @@
       <v-card-text class="py-2">
         <v-row align="center">
           <v-col cols="12" sm="3" class="d-flex justify-center">
-            <!-- 동그란 프로필 이미지 -->
-            <div
-              style="width: 140px; height: 140px; border-radius: 50%; overflow: hidden;"
-            >
+            <div style="width: 140px; height: 140px; border-radius: 50%; overflow: hidden;">
               <v-img :src="card.image" cover width="100%" height="100%" />
             </div>
           </v-col>
@@ -88,16 +78,23 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn block class="bg-black text-white">멘토링 신청하기</v-btn>
+        <v-btn block class="bg-black text-white" @click="applyDialog = true">
+          멘토링 신청하기
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
+
+  <!-- 연결된 다이얼로그 -->
+  <ApplyMatchingForm v-model:dialog="applyDialog" />
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import ApplyMatchingForm from './ApplyMatchingForm.vue'
 
 const dialog = ref(false)
+const applyDialog = ref(false)
 
 defineProps<{
   card: {
@@ -132,12 +129,12 @@ defineProps<{
 }
 
 .introduction-scroll-wrapper {
-  max-height: 200px; /* 기존보다 약간 높임 */
+  max-height: 200px;
   overflow-y: auto;
-  padding: 12px 6px; /* 상하 여백 추가 */
+  padding: 12px 6px;
   margin-bottom: 16px;
-  background-color: #ffffff; /* 배경색 살짝 주면 구분감 ↑ */
-  border-radius: 8px; /* 둥근 느낌 */
+  background-color: #ffffff;
+  border-radius: 8px;
 }
 
 .scrollable-text {

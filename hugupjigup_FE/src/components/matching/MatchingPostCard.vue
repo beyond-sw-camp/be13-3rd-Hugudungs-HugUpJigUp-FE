@@ -55,12 +55,13 @@ defineProps<{
   border: 1px solid #ddd;
   border-radius: 12px;
   width: 320px;
-  min-height: 520px;
+  height: 570px; /* 고정 높이로 변경 */
   padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: white;
+  overflow: hidden; /* 내용 넘칠 때 잘림 방지 */
 }
 
 .image-container {
@@ -125,5 +126,10 @@ defineProps<{
   color: white !important;
   border-radius: 8px;
   font-weight: 500;
+}
+
+.card-wrapper, .mentor-card {
+  position: relative;
+  z-index: 1; /* 또는 0 이하 */
 }
 </style>

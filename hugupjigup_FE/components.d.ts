@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ApplyMatchingForm: typeof import('./src/components/matching/ApplyMatchingForm.vue')['default']
     CommentsList: typeof import('./src/components/board/CommentsList.vue')['default']
     CountLabel: typeof import('./src/components/profile/CountLabel.vue')['default']
     CreateCommentForm: typeof import('./src/components/board/CreateCommentForm.vue')['default']
@@ -15,6 +16,7 @@ declare module 'vue' {
     CreateNoticePostForm: typeof import('./src/components/board/CreateNoticePostForm.vue')['default']
     CreatePostForm: typeof import('./src/components/board/CreatePostForm.vue')['default']
     CustomHeader: typeof import('./src/components/common/CustomHeader.vue')['default']
+    DecisionMatchingForm: typeof import('./src/components/matching/DecisionMatchingForm.vue')['default']
     Forbidden: typeof import('./src/components/error/Forbidden.vue')['default']
     InsertTextForm: typeof import('./src/components/sign/InsertTextForm.vue')['default']
     InternalServerError: typeof import('./src/components/error/InternalServerError.vue')['default']
