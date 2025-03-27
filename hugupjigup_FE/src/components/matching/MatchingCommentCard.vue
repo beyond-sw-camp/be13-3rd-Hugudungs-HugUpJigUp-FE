@@ -24,7 +24,7 @@
           <div class="text-box">
             <div class="name">{{ name }}</div>
             <div class="subtext">
-              멘토링: {{ mentor }}
+              멘토링: {{ mentor }}<br>
               {{ text }}
             </div>
           </div>
