@@ -43,6 +43,7 @@ import SignInPage from '@/pages/sign/SignInPage.vue'
 import NoticeBoardPage from '@/pages/board/NoticeBoardPage.vue'
 import NoticePostPage from '@/pages/board/NoticePostPage.vue'
 import CreateNoticePostPage from '@/pages/board/CreateNoticePostPage.vue'
+import MatchingCommentPage from '@/pages/matching/MatchingCommentPage.vue'
 
 // Error Pages
 import NotFoundPage from '@/pages/error/NotFoundPage.vue'
@@ -87,6 +88,7 @@ const routes = [
   { path: '/notice', component: NoticeBoardPage },
   { path: '/notice/:id', component: NoticePostPage },
   { path: '/create-notice-post', component: CreateNoticePostPage },
+  { path: '/matchingcomment', component: MatchingCommentPage },
 
   // ✅ 에러 테스트용 라우트 (개발 중 테스트용)
   {
