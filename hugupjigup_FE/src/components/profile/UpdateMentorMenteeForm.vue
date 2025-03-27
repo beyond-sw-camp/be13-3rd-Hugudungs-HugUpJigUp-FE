@@ -91,6 +91,7 @@ export default defineComponent({
           userState.updateUser(newUser);
         }
         alert('프로필 수정이 완료되었습니다.');
+        router.push('/profile')
       } catch (e) {
         console.log(e);
         alert('프로필 수정에 실패했습니다.');
