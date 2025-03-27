@@ -12,10 +12,10 @@ export const createMatching =
     return response.data.data;
 };
 
-export const getMatchingList = async (page: number=0, size: number=20): Promise<MatchingListResponseDto> => {
+export const getMatchingList = async (page: number=0, size: number=100, sort: string='updatedAt,desc'): Promise<MatchingListResponseDto> => {
   const response = await apiClient.get('/api/v1/matching/posts',
     {
-        params: { page, size }
+        params: { page, size, sort }
       }
     );
 

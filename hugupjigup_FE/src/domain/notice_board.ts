@@ -1,4 +1,5 @@
 import type { BoardType } from "../domain/free_board";
+import type {Pageable} from "./pageable";
 
 export type NoticeBoard = {
   noticeId: number;
@@ -16,3 +17,5 @@ export type CreateAndUpdateNoticeBoardDto = {
   content: string;
   boardType: BoardType;
 };
+
+export type NoticeBoardListResponseDto = Pageable<NoticeBoard>;

@@ -18,11 +18,11 @@ export const createFreeBoard =
   };
 
 export const getFreeBoardList =
-  async (page: number=0, size: number=20, searchType: SearchType='all' ,keyword?: string): Promise<GetFreeBoardListResponseDto> => {
+  async (page: number=0, size: number=100, searchType: SearchType='all' ,keyword?: string, sort: string='updatedAt,desc'): Promise<GetFreeBoardListResponseDto> => {
     const response = await apiClient.get('/api/v1/free',
       {
         params: {
-          page, size, searchType, keyword
+          page, size, searchType, keyword, sort
         }
       }
     );

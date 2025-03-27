@@ -1,4 +1,4 @@
-import type {CreateAndUpdateNoticeBoardDto, NoticeBoard} from "../domain/notice_board";
+import type {CreateAndUpdateNoticeBoardDto, NoticeBoard, NoticeBoardListResponseDto} from "../domain/notice_board";
 import apiClient from "../data/api_client";
 
 /**
@@ -16,8 +16,11 @@ export const createNoticeBoard =
     return response.data.data;
 }
 
-export const getNoticeBoardList = async (): Promise<NoticeBoard[]> => {
-  const response = await apiClient.get('/api/v1/notice/posts');
+export const getNoticeBoardList = async (page: number=0, size: number=100, sort: string='updatedAt,desc'): Promise<NoticeBoardListResponseDto> => {
+  const response = await apiClient.get('/api/v1/notice/posts',
+    {
+      params: { page, size, sort }
+    });
   if (response.status !== 200) {
     throw new Error("Failed to get notice board list");
   }
