@@ -109,6 +109,7 @@
                 title="멘토"
                 :text="userState.user?.mentorProfile?.introduction ?? '멘토 자기소개를 입력해 주세요.'"
                 path="updatementor"
+                :isMentor="true"
               />
             </v-col>
             <v-col cols="12" md="6">
@@ -116,6 +117,7 @@
                 title="멘티"
                 :text="userState.user?.menteeProfile?.introduction ?? '멘티 자기소개를 입력해 주세요.'"
                 path="updatementee"
+                :isMentor="false"
               />
             </v-col>
           </v-row>
