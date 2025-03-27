@@ -42,8 +42,12 @@ Back-end|공지 게시판/멘토링 게시글 기능|로그인 / 로그아웃 �
 # 화면 설계서
 <img width="6813" alt="허겁직업-화면설계서 (1)" src="https://github.com/user-attachments/assets/e35f6897-8c9a-4cea-bb73-176bedc39a3c" />
 
-
 ---
+
+## 요구사항 명세서
+![허거덩스_요구사항명세서 - Google Sheets_page-0001](https://github.com/user-attachments/assets/8fe02292-5ab3-4e31-bb1b-3db5c609c7fd)
+
+___
 
 ### 프론트 기술 스택
 
