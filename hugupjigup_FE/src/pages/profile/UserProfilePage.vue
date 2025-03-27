@@ -108,7 +108,7 @@
               <MentorMenteeContext
                 title="멘토"
                 :text="userState.user?.mentorProfile?.introduction ?? '멘토 자기소개를 입력해 주세요.'"
-                path="updatementor"
+                path="updatementee"
                 :isMentor="true"
               />
             </v-col>
