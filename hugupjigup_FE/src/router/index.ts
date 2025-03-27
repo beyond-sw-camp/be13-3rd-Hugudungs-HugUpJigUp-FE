@@ -73,7 +73,7 @@ const routes = [
   { path: '/decision', component: DecisionMatchingPage },
 
   // 페이지 단위
-  { path: '/update-mentormentee-profile', component: UpdateMentorMenteeProfilePage },
+  { path: '/updatementee', component: UpdateMentorMenteeProfilePage },
   { path: '/update-profile', component: UpdateProfilePage },
   { path: '/create-post', component: CreateFreePostPage },
   { path: '/matching', component: MatchingPage },
