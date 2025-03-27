@@ -1,15 +1,15 @@
 <template>
-  <v-card 
-    class="mentor-mentee-card" 
+  <v-card
+    class="mentor-mentee-card"
     elevation="2"
   >
     <div class="card-header">
       <v-card-title class="card-title">{{ title }}</v-card-title>
-      <v-btn 
+      <v-btn
         icon="$edit"
-        class="card-button" 
-        size="small" 
-        width="44" 
+        class="card-button"
+        size="small"
+        width="44"
         height="44"
         @click="handleButtonClick"
       />
@@ -29,10 +29,12 @@ const props = defineProps<{
   title: string;
   text: string;
   path: string
+  isMentor: boolean;
 }>();
 
 const handleButtonClick = () => {
-    router.push(`/${props.path}`);
+    router.push({ path: `/${props.path}`,
+      query: { isMentor: props.isMentor ? '1' : '0' } });
 };
 </script>
 

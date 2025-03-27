@@ -2,8 +2,8 @@ export type UserInfo = {
   userId: number,
   nickname: string,
   email: string,
-  currentJob: string,
-  desiredJob: string,
+  currentJob: string | null,
+  desiredJob: string | null,
   postCount: number,
   commentCount: number,
   matchingCommentCount: number,
@@ -15,7 +15,8 @@ export type UserInfo = {
 export type Profile = {
   rate: number,
   profileType: string,
-  introduction: string
+  introduction: string | null,
+  experience: string | null,
 }
 
 export type UpdateUserInfoDto = {
@@ -30,13 +31,13 @@ export type UpdateUserInfoResponseDto = {
 }
 
 export type UpdateMentorProfileDto = {
-  currentJob : string,
-  introduction: string,
-  experience: string
+  currentJob : string | null,
+  introduction: string | null,
+  experience: string | null
 }
 
 export type UpdateMenteeProfileDto = {
-  desiredJob: string,
-  introduction: string,
-  experience: string
+  desiredJob: string | null,
+  introduction: string | null,
+  experience: string | null
 }

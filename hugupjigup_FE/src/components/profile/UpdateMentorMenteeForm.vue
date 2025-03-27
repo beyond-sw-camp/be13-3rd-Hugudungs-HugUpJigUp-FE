@@ -36,6 +36,10 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed } from "vue";
+import router from "@/router";
+import {userPinia} from "@/states/user_pinia";
+import {updateMenteeProfile, updateMentorProfile} from "@/usecases/user_profile_usecase";
+import type {UpdateMenteeProfileDto, UpdateMentorProfileDto, UserInfo} from "@/domain/user_profile";
 
 export default defineComponent({
   name: "ProfileEditForm",
@@ -46,6 +50,8 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const userState = userPinia();
+
     const currentJob = ref("");
     const introduction = ref("");
     const career = ref("");
@@ -54,11 +60,41 @@ export default defineComponent({
     const jobLabel = computed(() => props.isMentor ? "현재 직무" : "희망 직무");
 
     const cancelEdit = () => {
-      alert("수정을 취소했습니다.");
+      router.back();
     };
 
-    const completeEdit = () => {
-      alert("프로필이 수정되었습니다!");
+    const completeEdit = async () => {
+      try {
+        if(props.isMentor) {
+          const updateMentorProfileDto:UpdateMentorProfileDto = {
+            introduction: introduction.value ?? userState.user!.mentorProfile.introduction,
+            experience: career.value ?? userState.user!.mentorProfile.introduction,
+            currentJob: currentJob.value ?? userState.user!.mentorProfile.introduction,
+          }
+          const response: UpdateMentorProfileDto = await updateMentorProfile(userState.user!.userId, updateMentorProfileDto);
+          const newUser: UserInfo = userState.user!;
+          newUser.currentJob = response.currentJob;
+          newUser.mentorProfile!.introduction = response.introduction;
+          newUser.mentorProfile!.experience = response.experience;
+          userState.updateUser(newUser);
+        } else {
+          const updateMentorProfileDto:UpdateMenteeProfileDto = {
+            introduction: introduction.value ?? userState.user!.menteeProfile.introduction,
+            experience: career.value ?? userState.user!.menteeProfile.introduction,
+            desiredJob: currentJob.value ?? userState.user!.menteeProfile.introduction,
+          }
+          const response: UpdateMenteeProfileDto = await updateMenteeProfile(userState.user!.userId, updateMentorProfileDto);
+          const newUser: UserInfo = userState.user!;
+          newUser.desiredJob = response.desiredJob;
+          newUser.menteeProfile!.introduction = response.introduction;
+          newUser.menteeProfile!.experience = response.experience;
+          userState.updateUser(newUser);
+        }
+        alert('프로필 수정이 완료되었습니다.');
+      } catch (e) {
+        console.log(e);
+        alert('프로필 수정에 실패했습니다.');
+      }
     };
 
     return {

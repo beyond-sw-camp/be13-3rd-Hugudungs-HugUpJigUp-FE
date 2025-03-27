@@ -3,7 +3,7 @@
     <LogoTap />
     <v-row justify="center">
       <v-col cols="12">
-        <UpdateMentorMenteeForm />
+        <UpdateMentorMenteeForm :is-mentor=isMentor />
       </v-col>
     </v-row>
   </v-container>
@@ -11,6 +11,10 @@
 
 <script lang="ts" setup>
 import UpdateMentorMenteeForm from '@/components/profile/UpdateMentorMenteeForm.vue'
+import {useRoute} from "vue-router";
+
+const router = useRoute();
+const isMentor: boolean = router.query.isMentor === '1';
 </script>
 
 <style scoped>
