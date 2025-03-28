@@ -35,7 +35,7 @@
 |---|  -- | --- | --- | --- | --- |
 |![image](https://github.com/user-attachments/assets/b9ecc18b-a9be-41a4-aaec-248c5f6e4d06)| <img src="https://github.com/user-attachments/assets/b74aed62-6bfd-467f-808a-d46241f26014" width="150" height="170"/>| <img src="https://github.com/user-attachments/assets/b74aed62-6bfd-467f-808a-d46241f26014" width="150" height="170"/> | <img src="https://github.com/user-attachments/assets/b74aed62-6bfd-467f-808a-d46241f26014" width="150" height="170"/> | <img src="https://github.com/user-attachments/assets/b74aed62-6bfd-467f-808a-d46241f26014" width="150" height="170"/> | <img src="https://github.com/user-attachments/assets/b74aed62-6bfd-467f-808a-d46241f26014" width="150" height="170"/> |
 | 역할 | 팀장 | 팀원 | 팀원 | 팀원 |  팀원 |
-Back-end|공지 게시판/멘토링 게시글 기능|로그인 / 로그아웃 기능|프로필 관리 기능|자유 게시판/멘토링 댓글 기능| 회원가입 기능, 리팩토링 및 기능 개선|
+Front-end|공통 컴포넌트 개발 (유저 프로필, 게시판 관련)유저 프로필, 멘토링 후기 페이지 개발|로그인 관련 컴포넌트 및 로그인/회원가입, 게시판 페이지 개발|게시판, 프로필, 멘토링 컴포넌트와 프로필, 멘토링 페이지 개발 및 전체적인 CSS 스타일 관리| 게시판, 프로필, 멘토링 컴포넌트와 프로필, 멘토링, 게시판 페이지 개발 및 전체적인 CSS 스타일 관리| Axios 작업을 통한 데이터 통신 구현|
 
 ---
 
