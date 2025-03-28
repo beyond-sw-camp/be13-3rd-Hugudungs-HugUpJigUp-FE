@@ -46,7 +46,8 @@ Front-end|공통 컴포넌트 개발 (유저 프로필, 게시판 관련)유저 
 
 ## 요구사항 명세서
 ![허거덩스_요구사항명세서 - Google Sheets_page-0001](https://github.com/user-attachments/assets/8fe02292-5ab3-4e31-bb1b-3db5c609c7fd)
-
+##
+[UI/UX 테스트 보고서](https://docs.google.com/spreadsheets/d/1UmyeZbbrtFs9PbaFyjvFLuDoqYt_EioCJzzCY1lTHAU/edit?gid=444207531#gid=444207531)
 ___
 
 ### 프론트 기술 스택
