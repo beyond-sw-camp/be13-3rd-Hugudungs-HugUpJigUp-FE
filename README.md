@@ -59,40 +59,29 @@ ___
 - Axios
 - ComposeAPI
 ### 디렉터리 구조(클린 아키텍쳐)
-```jsx
+```vue
 src/
-├── application/               # 애플리케이션 레이어
-│   ├── config/                # 설정 파일 (환경 변수, 전역 설정 등)
-│   └── usecases/              # 시스템의 모든 사용 사례를 캡슐화 및 구현
-│       └── exampleUsecase.js  # 예시: 특정 비즈니스 로직 구현
+├── usecases/              # 시스템의 모든 사용 사례를 캡슐화 및 구현
+│   └── exampleUsecase.ts  # 예시: 특정 비즈니스 로직 구현
 │
-├── data/                      # 외부 API와의 통신 담당
-│   ├── services/              # 외부 API와 통신하는 서비스 로직
-│   │   └── apiService.js      # 예시: API 호출 로직
-│   └── network/               # 네트워크 관련 설정 (Axios, Fetch 등)
-│       └── apiClient.js       # 예시: Axios 클라이언트 설정
+├── data/                  # 외부 API와의 통신 담당
+│   └── apiClient.ts       # 예시: Axios 클라이언트 설정
 │
-├── domain/                    # 데이터와 상태 관리 로직 포함
-│   └── models/                # 애플리케이션의 도메인 모델 정의
-│       └── userModel.js       # 예시: 사용자 데이터 모델
+├── domain/                # 데이터와 상태 관리 로직 포함
+│   └── user.ts            # 예시: 사용자 데이터 모델
 │
-├── presentation/              # UI 및 화면 표시 레이어
-│   ├── pages/                 # 페이지 단위 컴포넌트
-│   │   ├── HomePage.jsx       # 예시: 홈 페이지 컴포넌트
-│   │   ├── LoginPage.jsx      # 예시: 로그인 페이지 컴포넌트
-│   │   └── components/        # 재사용 가능한 UI 컴포넌트 모음
-│   │       ├── Button.jsx     # 버튼 컴포넌트
-│   │       └── Header.jsx     # 헤더 컴포넌트
-│   └── App.jsx                # 애플리케이션 진입점
+├── components/            # 재사용 가능한 UI 컴포넌트 모음
+│   ├── Button.vue         # 버튼 컴포넌트
+│   └── Header.vue         # 헤더 컴포넌트
+├── pages/                 # 페이지 단위 컴포넌트
+│   ├── HomePage.vue       # 예시: 홈 페이지 컴포넌트
+│   └── LoginPage.vue      # 예시: 로그인 페이지 컴포넌트
 │
-├── resources/                 # 리소스 파일 (이미지, 아이콘 등)
-│   ├── images/                # 이미지 파일 모음
-│   │   ├── logo.png           # 예시: 로고 이미지 파일
-│   │   └── banner.jpg         # 예시: 배너 이미지 파일
-│   └── icons/                 # 아이콘 파일 모음
-│       └── userIcon.svg       # 예시: 사용자 아이콘 파일
-└── index.js                   # 애플리케이션 엔트리 포인트 (ReactDOM 렌더링)
-
+├── assets/                # 리소스 파일 (이미지, 아이콘 등)
+│   └── logo.png           # 예시: 로고 이미지 파일
+│
+├── main.ts                # 애플리케이션 엔트리 포인트 (ReactDOM 렌더링)
+└── App.vue                # 애플리케이션 진입점
 ```
 
 
