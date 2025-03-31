@@ -48,6 +48,24 @@ Front-end|공통 컴포넌트 개발 (유저 프로필, 게시판 관련)유저 
 ![허거덩스_요구사항명세서 - Google Sheets_page-0001](https://github.com/user-attachments/assets/8fe02292-5ab3-4e31-bb1b-3db5c609c7fd)
 ##
 [UI/UX 테스트 보고서](https://docs.google.com/spreadsheets/d/1UmyeZbbrtFs9PbaFyjvFLuDoqYt_EioCJzzCY1lTHAU/edit?gid=444207531#gid=444207531)
+
+
+<details><summary>
+화면 결과 보고서
+</summary>
+
+![화면결과_보고서-1](https://github.com/user-attachments/assets/f23d4e1c-18cd-4804-ae2b-b874a812f905)
+
+![화면결과_보고서-2](https://github.com/user-attachments/assets/111794fd-d78f-4c3c-a99c-c1926f1b5280)
+
+![화면결과_보고서-3](https://github.com/user-attachments/assets/ba6e20a9-449c-43f9-bfb0-3c53627220de)
+
+![화면결과_보고서-4](https://github.com/user-attachments/assets/c6909854-5c97-4298-8278-7a56cc73da10)
+
+![화면결과_보고서-5](https://github.com/user-attachments/assets/a749c3c2-caa1-410b-a173-cda1bf4773da)
+
+![화면결과_보고서-6](https://github.com/user-attachments/assets/5b1c3312-11d9-4f21-9c27-eba035561ff1)
+</details>
 ___
 
 ### 프론트 기술 스택
